@@ -44,7 +44,9 @@ bonus	: $(NAME_B)
 
 $(NAME)	: ${OBJS}
 		$(MAKE) -C ${LIBDIR} all
-		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT}
+		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT} -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+
+# -lX11 -lXext -lmlx
 
 $(NAME_B)	: ${OBJS_B}
 		$(MAKE) -C ${LIBDIR} all
