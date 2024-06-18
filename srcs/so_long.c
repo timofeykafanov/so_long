@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/18 15:21:06 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:24:26 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ int	main(int argc, char **argv)
 			return (free_map(data.map), ERROR);
 		data.wdw = mlx_new_window(data.mlx, data.width, data.height, "so_long");
 		if (!data.wdw)
-			return (free_map(data.map), mlx_destroy_display(data.mlx), free(data.mlx), ERROR);
+		{
+			free_map(data.map);
+			mlx_destroy_display(data.mlx);
+			free(data.mlx);
+			return (ERROR);
+		}
 		mlx_key_hook(data.wdw, handle_input, &data);
 		display_game(data);
 		mlx_loop(data.mlx);
