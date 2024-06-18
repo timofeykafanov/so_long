@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/18 13:53:47 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:21:24 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,20 @@ typedef struct s_img
 	int		w;
 	int		h;
 }	t_img;
+
+// free.c
+
+void	free_map(char **map);
+
+// display.c
+
+void	display_game(t_mlx_data data);
+
+// map.c
+
+int		count_width(char **map);
+int		count_height(char **map);
+char	**read_map(char *file_name);
+bool	is_map_valid(char **map);
 
 #endif // SO_LONG_H
