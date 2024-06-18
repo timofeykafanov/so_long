@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/17 15:23:09 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/18 13:53:47 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include "../libft/libft.h"
 # include "mlx.h"
+# include <X11/keysym.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # define SUCCESS 0
 # define ERROR 1
@@ -29,10 +31,18 @@
 # define DOWN 115
 # define RIGHT 100
 
+# define WALL '1'
+# define FLOOR '0'
+# define PLAYER 'P'
+
+# define WALL_IMG "./images/wall.xpm"
+# define FLOOR_IMG "./images/floor.xpm"
+# define PLAYER_IMG "./images/hero_opened.xpm"
+
 typedef struct s_mlx_data
 {
-	void	*connect;
-	void	*window;
+	void	*mlx;
+	void	*wdw;
 	int		width;
 	int		height;
 	char	**map;
@@ -43,7 +53,6 @@ typedef struct s_img
 	void	*img;
 	int		w;
 	int		h;
-	char	*addr;
 }	t_img;
 
 #endif // SO_LONG_H
