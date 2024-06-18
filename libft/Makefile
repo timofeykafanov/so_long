@@ -18,7 +18,10 @@ SRCS	= ft_atoi.c ft_isdigit.c ft_memmove.c ft_split.c ft_strlcpy.c \
 		ft_memcpy.c ft_putstr_fd.c ft_strlcat.c ft_strrchr.c ft_lstnew.c \
 		ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-		get_next_line.c get_next_line_utils.c
+		get_next_line.c get_next_line_utils.c \
+		ft_printf/ft_printf.c ft_printf/printf_ft_itoa.c \
+		ft_printf/printf_handle_c_s_d_i_u.c \
+		ft_printf/printf_handle_p_x_percent.c ft_printf/printf_utils.c
 
 OBJSDIR	= objs
 

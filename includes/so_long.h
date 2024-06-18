@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/13 17:21:46 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:23:09 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include "mlx.h"
+# include <fcntl.h>
 
 # define SUCCESS 0
 # define ERROR 1
+
+# define IMG_H 32
+# define IMG_W 32
 
 # define ESC 65307
 # define UP 119

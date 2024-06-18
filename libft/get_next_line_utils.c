@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:30:08 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 17:20:39 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:43:22 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ char	*ft_strjoin_gnl(char **s1, char **s2)
 	int		i;
 	int		j;
 
-	res = (char *)malloc(1 * (ft_strlen_gnl(*s1) + ft_strlen_gnl(*s2) + 1));
+	if (*s1 == NULL)
+		return (*s2);
+	res = (char *)malloc((ft_strlen_gnl(*s1) + ft_strlen_gnl(*s2) + 1));
 	if (!res)
 		return (free_and_null(s1), free_and_null(s2), NULL);
 	i = 0;
@@ -64,8 +66,8 @@ char	*ft_strjoin_gnl(char **s1, char **s2)
 		j++;
 	}
 	res[i + j] = '\0';
-	free_and_null(&(*s1));
-	free_and_null(&(*s2));
+	free_and_null(s1);
+	free_and_null(s2);
 	return (res);
 }
 

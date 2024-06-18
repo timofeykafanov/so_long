@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:29:47 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 16:30:02 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:10:02 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,21 @@ static char	*last_line(char **buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[1024];
+	static char	*buffer;
 	int			read_to_end;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
+	if (BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
+	if (fd < 0)
+		return (free(buffer), NULL);
 	while (1)
 	{
-		if (buffer[fd] && include_n(buffer[fd]))
-			return (return_line(&buffer[fd]));
-		read_to_end = read_text(fd, &buffer[fd]);
+		if (buffer && include_n(buffer))
+			return (return_line(&buffer));
+		read_to_end = read_text(fd, &buffer);
 		if (!read_to_end)
-			return (free_and_null(&buffer[fd]), NULL);
+			return (free_and_null(&buffer), NULL);
 		if (read_to_end == 2)
-			return (last_line(&buffer[fd]));
+			return (last_line(&buffer));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:37:54 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/21 09:15:23 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:11:11 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	**ft_split(char const *s, char c)
 	res = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (!res)
 		return (NULL);
-	if (fill_res(s, c, res, i) == ERROR)
+	if (fill_res(s, c, res, i) == 1)
 		return (NULL);
 	return (res);
 }

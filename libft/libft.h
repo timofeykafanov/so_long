@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:58:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/07 09:05:00 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/18 11:11:01 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <stdint.h>
+# include <stdarg.h>
 
 # define SUCCESS 0
 # define ERROR 1
@@ -86,5 +87,23 @@ int		include_n(char *s);
 char	*ft_strjoin_gnl(char **s1, char **s2);
 char	*ft_strdup_gnl(char *s);
 void	free_and_null(char **p);
+
+// ft_printf
+
+size_t	printf_ft_strlen(const char *s);
+char	*printf_ft_strdup(const char *s);
+char	*printf_ft_itoa(int n);
+char	*printf_ft_itoa_u(unsigned int n);
+void	printf_ft_putchar(char c, int *count);
+void	printf_ft_putstr(char *str, int *count);
+void	put_hex(unsigned long num, char chr, int *count);
+void	handle_p(va_list type, int *count, char chr);
+void	handle_x(va_list type, int *count, char chr);
+void	handle_c(va_list type, int *count);
+void	handle_s(va_list type, int *count);
+void	handle_d_and_i(va_list type, int *count);
+void	handle_u(va_list type, int *count);
+void	handle_percent(int *count);
+int		ft_printf(const char *s, ...);
 
 #endif
