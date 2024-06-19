@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/18 15:21:24 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:26:45 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@
 # define WALL '1'
 # define FLOOR '0'
 # define PLAYER 'P'
+# define COIN 'C'
+# define EXIT 'E'
+# define ENEMY 'G'
 
-# define WALL_IMG "./images/wall.xpm"
+# define WALL_IMG "./images/walls/wall.xpm"
 # define FLOOR_IMG "./images/floor.xpm"
 # define PLAYER_IMG "./images/hero_opened.xpm"
+# define ENEMY_IMG "./images/enemy.xpm"
 
 typedef struct s_mlx_data
 {
@@ -54,6 +58,12 @@ typedef struct s_img
 	int		w;
 	int		h;
 }	t_img;
+
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}	t_coord;
 
 // free.c
 
