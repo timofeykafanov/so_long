@@ -51,6 +51,7 @@ $(NAME)	: ${OBJS}
 		$(MAKE) -C ${LIBDIR} all
 		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT} -lX11 -lXext -lmlx
 
+# -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 # -lX11 -lXext -lmlx
 
 $(NAME_B)	: ${OBJS_B}
