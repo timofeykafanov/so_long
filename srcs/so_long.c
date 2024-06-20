@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/19 18:04:56 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:58:20 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	main(int argc, char **argv)
 		mlx_key_hook(data.wdw, handle_input, &data);
 		display_game(data);
 		mlx_loop(data.mlx);
-		// free_map(data.map);
 	}
 	else
 		ft_printf("Usage: %s [map file path]\n", argv[0]);

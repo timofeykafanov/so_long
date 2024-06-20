@@ -16,8 +16,10 @@ INCLUDES	= includes
 SRCS		= \
 			$(SRCSDIR)/so_long.c \
 			$(SRCSDIR)/display.c \
+			$(SRCSDIR)/display_utils.c \
 			$(SRCSDIR)/map.c \
 			$(SRCSDIR)/free.c \
+			$(SRCSDIR)/put_border.c \
 
 SRCS_B		= \
 			$(SRCSDIR)/so_long_bonus.c \

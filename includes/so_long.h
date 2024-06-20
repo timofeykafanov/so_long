@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/19 18:26:45 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:17:06 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdbool.h>
+
+#include <stdio.h>
 
 # define SUCCESS 0
 # define ERROR 1
@@ -38,10 +40,26 @@
 # define EXIT 'E'
 # define ENEMY 'G'
 
-# define WALL_IMG "./images/walls/wall.xpm"
 # define FLOOR_IMG "./images/floor.xpm"
 # define PLAYER_IMG "./images/hero_opened.xpm"
-# define ENEMY_IMG "./images/enemy.xpm"
+# define ENEMY_IMG "./images/hero_closed.xpm"
+
+# define WALL_IMG "./images/walls/wall.xpm"
+# define RBL "./images/walls/wall_rbl.xpm"
+# define LTB "./images/walls/wall_ltb.xpm"
+# define RL "./images/walls/wall_rl.xpm"
+# define RTL "./images/walls/wall_rtl.xpm"
+# define RTB "./images/walls/wall_rtb.xpm"
+# define TB "./images/walls/wall_tb.xpm"
+# define RB "./images/walls/wall_rb.xpm"
+# define LB "./images/walls/wall_lb.xpm"
+# define RT "./images/walls/wall_rt.xpm"
+# define LT "./images/walls/wall_lt.xpm"
+# define RTLB "./images/walls/wall_rtlb.xpm"
+# define B "./images/walls/wall_b.xpm"
+# define T "./images/walls/wall_t.xpm"
+# define R "./images/walls/wall_r.xpm"
+# define L "./images/walls/wall_l.xpm"
 
 typedef struct s_mlx_data
 {
@@ -69,9 +87,19 @@ typedef struct s_coord
 
 void	free_map(char **map);
 
+// put_border.c
+
+void	*put_border(t_mlx_data data, t_img *img, int y, int x);
+
 // display.c
 
 void	display_game(t_mlx_data data);
+
+// display_utils.c
+bool	is_cross(t_mlx_data data, int y, int x);
+bool	is_corner(t_mlx_data data, int y, int x);
+void	*put_cross(t_mlx_data data, t_img *img, int y, int x);
+void	*put_corner(t_mlx_data data, t_img *img, int y, int x);
 
 // map.c
 
