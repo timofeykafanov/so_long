@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/20 16:14:29 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:50:57 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,13 @@ static t_img	*put_img(t_mlx_data data, char c, int y, int x)
 	static t_img	img = {NULL, IMG_W, IMG_H};
 
 	if (c == WALL)
-	{
 		img.img = put_wall(data, &img, y, x);
-		return (&img);
-	}
 	else if (c == FLOOR)
 		img.img = mlx_xpm_file_to_image(data.mlx, FLOOR_IMG, &img.w, &img.h);
 	else if (c == PLAYER)
 		img.img = mlx_xpm_file_to_image(data.mlx, PLAYER_IMG, &img.w, &img.h);
 	else if (c == COIN)
-		img.img = mlx_xpm_file_to_image(data.mlx, PLAYER_IMG, &img.w, &img.h);
+		img.img = mlx_xpm_file_to_image(data.mlx, COIN_IMG, &img.w, &img.h);
 	else if (c == EXIT)
 		img.img = mlx_xpm_file_to_image(data.mlx, PLAYER_IMG, &img.w, &img.h);
 	else if (c == ENEMY)

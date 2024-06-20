@@ -14,7 +14,7 @@ SRCSDIR		= srcs
 INCLUDES	= includes
 
 SRCS		= \
-			$(SRCSDIR)/so_long.c \
+			$(SRCSDIR)/main.c \
 			$(SRCSDIR)/display.c \
 			$(SRCSDIR)/display_utils.c \
 			$(SRCSDIR)/map.c \

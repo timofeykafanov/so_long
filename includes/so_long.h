@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/20 16:17:06 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:53:52 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,23 @@
 # define EXIT 'E'
 # define ENEMY 'G'
 
+# define PLAYER_IMG "./images/hero/hero_opened.xpm"
 # define FLOOR_IMG "./images/floor.xpm"
-# define PLAYER_IMG "./images/hero_opened.xpm"
-# define ENEMY_IMG "./images/hero_closed.xpm"
+# define ENEMY_IMG "./images/hero/hero_closed.xpm"
+# define COIN_IMG "./images/coins/coin.xpm"
 
 # define WALL_IMG "./images/walls/wall.xpm"
+# define RTLB "./images/walls/wall_rtlb.xpm"
 # define RBL "./images/walls/wall_rbl.xpm"
 # define LTB "./images/walls/wall_ltb.xpm"
-# define RL "./images/walls/wall_rl.xpm"
 # define RTL "./images/walls/wall_rtl.xpm"
 # define RTB "./images/walls/wall_rtb.xpm"
+# define RL "./images/walls/wall_rl.xpm"
 # define TB "./images/walls/wall_tb.xpm"
 # define RB "./images/walls/wall_rb.xpm"
 # define LB "./images/walls/wall_lb.xpm"
 # define RT "./images/walls/wall_rt.xpm"
 # define LT "./images/walls/wall_lt.xpm"
-# define RTLB "./images/walls/wall_rtlb.xpm"
 # define B "./images/walls/wall_b.xpm"
 # define T "./images/walls/wall_t.xpm"
 # define R "./images/walls/wall_r.xpm"
