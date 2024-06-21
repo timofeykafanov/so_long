@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/21 11:08:17 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:02:12 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,41 @@ int	handle_input(int key, t_mlx_data *data)
 	return (SUCCESS);
 }
 
+int	so_long(char *file)
+{
+	static t_mlx_data	data = {NULL, NULL, 0, 0, NULL, 0};
+
+	data.map = read_map(file);
+	if (!data.map)
+		return (ERROR);
+	data.width = count_width(data.map) * IMG_W;
+	data.height = count_height(data.map) * IMG_H + 45;
+	if (!is_map_valid(data.map))
+		return (free_map(data.map), ERROR);
+	data.mlx = mlx_init();
+	if (!data.mlx)
+		return (free_map(data.map), ERROR);
+	data.wdw = mlx_new_window(data.mlx, data.width, data.height, GAME);
+	if (!data.wdw)
+	{
+		free_map(data.map);
+		mlx_destroy_display(data.mlx);
+		free(data.mlx);
+		return (ERROR);
+	}
+	mlx_key_hook(data.wdw, handle_input, &data);
+	display_game(data);
+	mlx_loop(data.mlx);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	static t_mlx_data	data = {NULL, NULL, 0, 0, NULL};
-
 	if (argc == 2)
 	{
-		data.map = read_map(argv[1]);
-		if (!data.map)
+		// TODO: validate file_name (.ber)
+		if (so_long(argv[1]) == ERROR)
 			return (ERROR);
-		data.width = count_width(data.map) * IMG_W;
-		data.height = count_height(data.map) * IMG_H;
-		if (!is_map_valid(data.map))
-			return (free_map(data.map), ERROR);
-		data.mlx = mlx_init();
-		if (!data.mlx)
-			return (free_map(data.map), ERROR);
-		data.wdw = mlx_new_window(data.mlx, data.width, data.height, GAME);
-		if (!data.wdw)
-		{
-			free_map(data.map);
-			mlx_destroy_display(data.mlx);
-			free(data.mlx);
-			return (ERROR);
-		}
-		mlx_key_hook(data.wdw, handle_input, &data);
-		display_game(data);
-		mlx_loop(data.mlx);
 	}
 	else
 		ft_printf("Usage: %s [map file path]\n", argv[0]);

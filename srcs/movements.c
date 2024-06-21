@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 10:34:20 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/21 11:09:10 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:52:22 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	move_up(t_mlx_data *data)
 	{
 		data->map[y][x] = FLOOR;
 		data->map[y - 1][x] = PLAYER;
+		data->moves++;
+		ft_printf("Moves = %d\n", data->moves);
 	}
 }
 
@@ -56,6 +58,8 @@ void	move_down(t_mlx_data *data)
 	{
 		data->map[y][x] = FLOOR;
 		data->map[y + 1][x] = PLAYER;
+		data->moves++;
+		ft_printf("Moves = %d\n", data->moves);
 	}
 }
 
@@ -71,6 +75,8 @@ void	move_right(t_mlx_data *data)
 	{
 		data->map[y][x] = FLOOR;
 		data->map[y][x + 1] = PLAYER;
+		data->moves++;
+		ft_printf("Moves = %d\n", data->moves);
 	}
 }
 
@@ -86,5 +92,7 @@ void	move_left(t_mlx_data *data)
 	{
 		data->map[y][x] = FLOOR;
 		data->map[y][x - 1] = PLAYER;
+		data->moves++;
+		ft_printf("Moves = %d\n", data->moves);
 	}
 }

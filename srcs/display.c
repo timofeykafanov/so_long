@@ -6,11 +6,12 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/20 17:50:57 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:01:23 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include <mlx.h>
 
 static void	*put_wall(t_mlx_data data, t_img *img, int y, int x)
 {
@@ -65,15 +66,22 @@ static void	display_img(t_mlx_data data, int y, int x)
 	if (!img->img)
 		return ;
 	mlx_put_image_to_window(data.mlx, data.wdw, img->img, \
-		x * img->w, y * img->h);
+		x * img->w, y * img->h + 45);
 	mlx_destroy_image(data.mlx, img->img);
 }
 
 void	display_game(t_mlx_data data)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	char	*moves;
+	char	*num;
 
+	num = ft_itoa(data.moves);
+	moves = ft_strjoin("Moves: ", num);
+	mlx_string_put(data.mlx, data.wdw, data.width / 2 - 25, 30, 7777777, moves);
+	free(num);
+	free(moves);
 	y = 0;
 	while (y < count_height(data.map))
 	{

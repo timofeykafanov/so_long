@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/19 17:43:16 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:24:31 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	**read_map(char *file_name)
 
 	file_content = NULL;
 	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
+		return (ft_printf("File doesn't exist!\n"), NULL);
 	line = get_next_line(fd);
 	if (!line)
 		return (NULL);

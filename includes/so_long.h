@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/21 11:09:29 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:49:57 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_mlx_data
 	int		width;
 	int		height;
 	char	**map;
+	int		moves;
 }	t_mlx_data;
 
 typedef struct s_img
