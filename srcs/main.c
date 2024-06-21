@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/20 16:58:06 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/21 11:08:17 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,28 @@ int	handle_input(int key, t_mlx_data *data)
 		free_map(data->map);
 		exit(1);
 	}
-	ft_printf("The %d key has been pressed\n", key);
+	else if (key == XK_Up)
+	{
+		move_up(data);
+		display_game(*data);
+	}
+	else if (key == XK_Down)
+	{
+		move_down(data);
+		display_game(*data);
+	}
+	else if (key == XK_Right)
+	{
+		move_right(data);
+		display_game(*data);
+	}
+	else if (key == XK_Left)
+	{
+		move_left(data);
+		display_game(*data);
+	}
+	else
+		ft_printf("The %d key has been pressed\n", key);
 	return (SUCCESS);
 }
 
@@ -43,7 +64,7 @@ int	main(int argc, char **argv)
 		data.mlx = mlx_init();
 		if (!data.mlx)
 			return (free_map(data.map), ERROR);
-		data.wdw = mlx_new_window(data.mlx, data.width, data.height, "so_long");
+		data.wdw = mlx_new_window(data.mlx, data.width, data.height, GAME);
 		if (!data.wdw)
 		{
 			free_map(data.map);

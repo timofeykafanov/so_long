@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/20 17:53:52 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/21 11:09:29 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define DOWN 115
 # define RIGHT 100
 
+# define GAME "Packman"
+
 # define WALL '1'
 # define FLOOR '0'
 # define PLAYER 'P'
@@ -41,8 +43,10 @@
 # define ENEMY 'G'
 
 # define PLAYER_IMG "./images/hero/hero_opened.xpm"
-# define FLOOR_IMG "./images/floor.xpm"
 # define ENEMY_IMG "./images/hero/hero_closed.xpm"
+
+# define FLOOR_IMG "./images/floor/floor.xpm"
+
 # define COIN_IMG "./images/coins/coin.xpm"
 
 # define WALL_IMG "./images/walls/wall.xpm"
@@ -108,5 +112,12 @@ int		count_width(char **map);
 int		count_height(char **map);
 char	**read_map(char *file_name);
 bool	is_map_valid(char **map);
+
+// movements.c
+
+void	move_up(t_mlx_data *data);
+void	move_down(t_mlx_data *data);
+void	move_right(t_mlx_data *data);
+void	move_left(t_mlx_data *data);
 
 #endif // SO_LONG_H

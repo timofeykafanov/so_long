@@ -20,6 +20,7 @@ SRCS		= \
 			$(SRCSDIR)/map.c \
 			$(SRCSDIR)/free.c \
 			$(SRCSDIR)/put_border.c \
+			$(SRCSDIR)/movements.c \
 
 SRCS_B		= \
 			$(SRCSDIR)/so_long_bonus.c \
