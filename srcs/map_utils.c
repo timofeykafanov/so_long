@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:15:10 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 15:17:02 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:16:16 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	is_map_rectangular(char **map)
 	while (map[i + 1])
 	{
 		if (ft_strlen(map[i]) != ft_strlen(map[i + 1]))
-			return (ft_printf("Error! Map should be rectangular!\n"), false);
+			return (ft_printf(ERR_MESS_SHAPE), false);
 		i++;
 	}
 	return (true);
@@ -73,9 +73,9 @@ bool	has_start_and_and(char **map)
 		i++;
 	}
 	if (val.player != 1)
-		ft_printf("Error! There shold be 1 player!\n");
+		ft_printf(ERR_MESS_PLAYER);
 	if (val.exit != 1)
-		ft_printf("Error! There shold be 1 exit!\n");
+		ft_printf(ERR_MESS_EXIT);
 	return (val.player == 1 && val.exit == 1);
 }
 
@@ -98,6 +98,6 @@ bool	contains_coins(t_mlx_data *data)
 		i++;
 	}
 	if (data->coins == 0)
-		ft_printf("Error! There should be at least 1 collectible!\n");
+		ft_printf(ERR_MESS_COINS);
 	return (data->coins > 0);
 }

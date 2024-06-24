@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 15:17:52 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:26:23 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define EXIT 'E'
 # define ENEMY 'G'
 
+# define NEW_LINE '\n'
+
 # define PLAYER_IMG "./images/hero/hero_opened.xpm"
 # define ENEMY_IMG "./images/hero/hero_closed.xpm"
 
@@ -67,6 +69,12 @@
 # define L "./images/walls/wall_l.xpm"
 
 # define ERR_MESS_PER "Error! The map should be surrounded by walls!\n"
+# define ERR_MESS_EXTEN "Error! Invalid file extention!\n"
+# define ERR_MESS_FILE "Error! File doesn't exist!\n"
+# define ERR_MESS_SHAPE "Error! Map should be rectangular!\n"
+# define ERR_MESS_PLAYER "Error! There shold be 1 player!\n"
+# define ERR_MESS_EXIT "Error! There shold be 1 exit!\n"
+# define ERR_MESS_COINS "Error! There should be at least 1 collectible!\n"
 
 typedef struct s_mlx_data
 {
@@ -77,6 +85,7 @@ typedef struct s_mlx_data
 	char	**map;
 	int		moves;
 	int		coins;
+	bool	flag;
 }	t_mlx_data;
 
 typedef struct s_img
@@ -111,6 +120,7 @@ void	*put_border(t_mlx_data data, t_img *img, int y, int x);
 void	display_game(t_mlx_data data);
 
 // display_utils.c
+
 bool	is_cross(t_mlx_data data, int y, int x);
 bool	is_corner(t_mlx_data data, int y, int x);
 void	*put_cross(t_mlx_data data, t_img *img, int y, int x);
@@ -120,8 +130,9 @@ void	*put_corner(t_mlx_data data, t_img *img, int y, int x);
 
 int		count_width(char **map);
 int		count_height(char **map);
-char	**read_map(char *file_name);
+char	**read_map(char *file_name, t_mlx_data *data);
 bool	is_map_valid(t_mlx_data *data);
+bool	is_filename_valid(char *filename);
 
 // map_utils.c
 

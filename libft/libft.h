@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:58:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/18 11:11:01 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:29:59 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include <stdbool.h>
 
 # define SUCCESS 0
 # define ERROR 1
@@ -81,7 +82,7 @@ t_list	*ft_lstlast(t_list *lst);
 #  define BUFFER_SIZE 42
 # endif
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, bool *flag, bool free);
 int		ft_strlen_gnl(char *str);
 int		include_n(char *s);
 char	*ft_strjoin_gnl(char **s1, char **s2);

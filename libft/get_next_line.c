@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:29:47 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/18 14:14:34 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:31:28 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,15 @@ static char	*last_line(char **buffer)
 		return (free_and_null(&line), NULL);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, bool *flag, bool clean)
 {
 	static char	*buffer;
 	int			read_to_end;
 
-	if (BUFFER_SIZE <= 0 || fd > 1024)
+	(void)flag;
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
-	if (fd < 0)
+	if (clean)
 		return (free(buffer), NULL);
 	while (1)
 	{
