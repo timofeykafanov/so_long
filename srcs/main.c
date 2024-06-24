@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 19:58:49 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:03:04 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,21 @@ int	so_long(char *file)
 	data.height = count_height(data.map) * IMG_H + 45;
 	if (!is_map_valid(&data))
 		return (free_map(data.map), ERROR);
-	// data.mlx = mlx_init();
-	// if (!data.mlx)
-	// 	return (free_map(data.map), ERROR);
-	// data.wdw = mlx_new_window(data.mlx, data.width, data.height, GAME);
-	// if (!data.wdw)
-	// {
-	// 	free_map(data.map);
-	// 	mlx_destroy_display(data.mlx);
-	// 	free(data.mlx);
-	// 	return (ERROR);
-	// }
-	// mlx_key_hook(data.wdw, handle_input, &data);
-	// display_game(data);
-	// mlx_loop(data.mlx);
-	free_map(data.map);
+	data.mlx = mlx_init();
+	if (!data.mlx)
+		return (free_map(data.map), ERROR);
+	data.wdw = mlx_new_window(data.mlx, data.width, data.height, GAME);
+	if (!data.wdw)
+	{
+		free_map(data.map);
+		mlx_destroy_display(data.mlx);
+		free(data.mlx);
+		return (ERROR);
+	}
+	mlx_key_hook(data.wdw, handle_input, &data);
+	display_game(data);
+	mlx_loop(data.mlx);
+	// free_map(data.map);
 	return (1);
 }
 

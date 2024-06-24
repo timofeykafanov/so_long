@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 19:57:00 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:41:26 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@
 # define FLOOR_IMG "./images/floor/floor.xpm"
 
 # define COIN_IMG "./images/coins/coin.xpm"
+
+# define EXIT_IMG "./images/exit/color.xpm"
 
 # define WALL_IMG "./images/walls/wall.xpm"
 # define RTLB "./images/walls/wall_rtlb.xpm"
