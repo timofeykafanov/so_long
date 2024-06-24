@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/21 13:49:57 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:17:52 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@
 # define R "./images/walls/wall_r.xpm"
 # define L "./images/walls/wall_l.xpm"
 
+# define ERR_MESS_PER "Error! The map should be surrounded by walls!\n"
+
 typedef struct s_mlx_data
 {
 	void	*mlx;
@@ -74,6 +76,7 @@ typedef struct s_mlx_data
 	int		height;
 	char	**map;
 	int		moves;
+	int		coins;
 }	t_mlx_data;
 
 typedef struct s_img
@@ -88,6 +91,12 @@ typedef struct s_coord
 	int	x;
 	int	y;
 }	t_coord;
+
+typedef struct s_validation
+{
+	int	player;
+	int	exit;
+}	t_validation;
 
 // free.c
 
@@ -112,7 +121,14 @@ void	*put_corner(t_mlx_data data, t_img *img, int y, int x);
 int		count_width(char **map);
 int		count_height(char **map);
 char	**read_map(char *file_name);
-bool	is_map_valid(char **map);
+bool	is_map_valid(t_mlx_data *data);
+
+// map_utils.c
+
+bool	is_map_rectangular(char **map);
+bool	is_perimeter_true(char **map);
+bool	has_start_and_and(char **map);
+bool	contains_coins(t_mlx_data *data);
 
 // movements.c
 

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/21 17:01:23 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:33:31 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,38 @@ static void	display_img(t_mlx_data data, int y, int x)
 	mlx_destroy_image(data.mlx, img->img);
 }
 
+void	display_moves(t_mlx_data data)
+{
+	char	*moves;
+	char	*num;
+	char	*prev;
+
+	prev = ft_itoa(data.moves - 1);
+	if (!prev)
+		return ;
+	moves = ft_strjoin("Moves: ", prev);
+	if (!moves)
+		return (free(prev));
+	mlx_string_put(data.mlx, data.wdw, data.width / 2 - 25, 30, 0, moves);
+	free(prev);
+	free(moves);
+	num = ft_itoa(data.moves);
+	if (!num)
+		return ;
+	moves = ft_strjoin("Moves: ", num);
+	if (!moves)
+		return (free(num));
+	mlx_string_put(data.mlx, data.wdw, data.width / 2 - 25, 30, 7777777, moves);
+	free(num);
+	free(moves);
+}
+
 void	display_game(t_mlx_data data)
 {
 	int		y;
 	int		x;
-	char	*moves;
-	char	*num;
 
-	num = ft_itoa(data.moves);
-	moves = ft_strjoin("Moves: ", num);
-	mlx_string_put(data.mlx, data.wdw, data.width / 2 - 25, 30, 7777777, moves);
-	free(num);
-	free(moves);
+	display_moves(data);
 	y = 0;
 	while (y < count_height(data.map))
 	{

@@ -18,6 +18,7 @@ SRCS		= \
 			$(SRCSDIR)/display.c \
 			$(SRCSDIR)/display_utils.c \
 			$(SRCSDIR)/map.c \
+			$(SRCSDIR)/map_utils.c \
 			$(SRCSDIR)/free.c \
 			$(SRCSDIR)/put_border.c \
 			$(SRCSDIR)/movements.c \
