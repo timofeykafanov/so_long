@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:15:10 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 16:16:16 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:03:07 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,14 @@ bool	contains_coins(t_mlx_data *data)
 	if (data->coins == 0)
 		ft_printf(ERR_MESS_COINS);
 	return (data->coins > 0);
+}
+
+bool	is_filename_valid(char *filename)
+{
+	if (ft_strlen(filename) < 5)
+		return (ft_printf(ERR_MESS_EXTEN), false);
+	if (ft_strncmp(filename + ft_strlen(filename) - 4, ".ber", 4) != 0
+		|| ft_strncmp(filename + ft_strlen(filename) - 5, "/.ber", 5) == 0)
+		return (ft_printf(ERR_MESS_EXTEN), false);
+	return (true);
 }

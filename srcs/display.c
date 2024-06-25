@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 20:29:02 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 13:49:04 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	display_img(t_mlx_data data, int y, int x)
 	mlx_destroy_image(data.mlx, img->img);
 }
 
-void	display_moves(t_mlx_data data)
+static void	display_moves(t_mlx_data data)
 {
 	char	*moves;
 	char	*num;

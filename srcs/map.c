@@ -3,20 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 19:58:34 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 13:48:30 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include <stdbool.h>
+#include <stdio.h>
 
 int	count_width(char **map)
 {
 	int	width;
 
 	width = 0;
+	if (!map[0])
+		return (0);
 	while (map[0][width])
 		width++;
 	return (width);
@@ -32,21 +36,20 @@ int	count_height(char **map)
 	return (height);
 }
 
-char	**read_map(char *file_name, t_mlx_data *data)
+static char	**read_map(char *file_name, t_mlx_data *data)
 {
 	char	**map;
 	char	*file_content;
 	char	*line;
 	int		fd;
 
-	// TODO: modify gnl (error flag)
 	file_content = NULL;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		return (ft_printf(ERR_MESS_FILE), NULL);
 	line = get_next_line(fd, &data->flag, false);
 	if (!line)
-		return (NULL);
+		return (ft_printf(ERR_MESS_EMPTY), NULL);
 	while (line)
 	{
 		file_content = ft_strjoin_gnl(&file_content, &line);
@@ -56,12 +59,12 @@ char	**read_map(char *file_name, t_mlx_data *data)
 	}
 	map = ft_split(file_content, NEW_LINE);
 	free(file_content);
-	if (close(fd) == -1 || data->flag == true)
-		return (free_map(map), NULL);
+	if (close(fd) == -1 || (data->flag && map))
+		return (free_map(map), ft_printf(ERR_MESS_READ), NULL);
 	return (map);
 }
 
-bool	is_map_valid(t_mlx_data *data)
+static bool	is_map_valid(t_mlx_data *data)
 {
 	bool	coins;
 	bool	shape;
@@ -75,12 +78,25 @@ bool	is_map_valid(t_mlx_data *data)
 	return (coins && shape && perimeter && start_and_end);
 }
 
-bool	is_filename_valid(char *filename)
+int	init_map(t_mlx_data *data, char *file)
 {
-	if (ft_strlen(filename) < 5)
-		return (ft_printf(ERR_MESS_EXTEN), false);
-	if (ft_strncmp(filename + ft_strlen(filename) - 4, ".ber", 4) != 0
-		|| ft_strncmp(filename + ft_strlen(filename) - 5, "/.ber", 5) == 0)
-		return (ft_printf(ERR_MESS_EXTEN), false);
-	return (true);
+	bool	path;
+
+	data->map = read_map(file, data);
+	if (!data->map)
+		return (ERROR);
+	data->width = count_width(data->map) * IMG_W;
+	if (!data->width)
+		return (ft_printf(ERR_MESS_EMPTY), ERROR);
+	data->height = count_height(data->map) * IMG_H + 45;
+	if (!is_map_valid(data))
+		return (free_map(data->map), ERROR);
+	path = has_valid_path(data);
+	if (!path)
+		return (ft_printf(ERR_MESS_PATH), ERROR);
+	free_map(data->map);
+	data->map = read_map(file, data);
+	if (!data->map)
+		return (ERROR);
+	return (SUCCESS);
 }

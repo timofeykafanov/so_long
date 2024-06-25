@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 20:41:26 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 13:48:03 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@
 # define COIN 'C'
 # define EXIT 'E'
 # define ENEMY 'G'
+# define FILL 'F'
 
 # define NEW_LINE '\n'
 
 # define PLAYER_IMG "./images/hero/hero_opened.xpm"
-# define ENEMY_IMG "./images/hero/hero_closed.xpm"
+# define ENEMY_IMG "./images/enemy/enemy.xpm"
 
 # define FLOOR_IMG "./images/floor/floor.xpm"
 
@@ -71,13 +72,16 @@
 # define R "./images/walls/wall_r.xpm"
 # define L "./images/walls/wall_l.xpm"
 
-# define ERR_MESS_PER "Error! The map should be surrounded by walls!\n"
-# define ERR_MESS_EXTEN "Error! Invalid file extention!\n"
-# define ERR_MESS_FILE "Error! File doesn't exist!\n"
-# define ERR_MESS_SHAPE "Error! Map should be rectangular!\n"
-# define ERR_MESS_PLAYER "Error! There shold be 1 player!\n"
-# define ERR_MESS_EXIT "Error! There shold be 1 exit!\n"
-# define ERR_MESS_COINS "Error! There should be at least 1 collectible!\n"
+# define ERR_MESS_PER "Error\nThe map should be surrounded by walls!\n"
+# define ERR_MESS_EXTEN "Error\nInvalid file extention!\n"
+# define ERR_MESS_FILE "Error\nFile doesn't exist!\n"
+# define ERR_MESS_SHAPE "Error\nMap should be rectangular!\n"
+# define ERR_MESS_PLAYER "Error\nThere should be 1 player!\n"
+# define ERR_MESS_EXIT "Error\nThere should be 1 exit!\n"
+# define ERR_MESS_COINS "Error\nThere should be at least 1 collectible!\n"
+# define ERR_MESS_READ "Error\nRrror reading file!\n"
+# define ERR_MESS_EMPTY "Error\nEmpty map!\n"
+# define ERR_MESS_PATH "Error\nThere is no valid path!\n"
 
 typedef struct s_mlx_data
 {
@@ -133,9 +137,9 @@ void	*put_corner(t_mlx_data data, t_img *img, int y, int x);
 
 int		count_width(char **map);
 int		count_height(char **map);
-char	**read_map(char *file_name, t_mlx_data *data);
-bool	is_map_valid(t_mlx_data *data);
-bool	is_filename_valid(char *filename);
+// char	**read_map(char *file_name, t_mlx_data *data);
+// bool	is_map_valid(t_mlx_data *data);
+int		init_map(t_mlx_data *data, char *file);
 
 // map_utils.c
 
@@ -143,12 +147,18 @@ bool	is_map_rectangular(char **map);
 bool	is_perimeter_true(char **map);
 bool	has_start_and_and(char **map);
 bool	contains_coins(t_mlx_data *data);
+bool	is_filename_valid(char *filename);
 
 // movements.c
 
+void	find_player(t_mlx_data *data, int *y, int *x);
 void	move_up(t_mlx_data *data);
 void	move_down(t_mlx_data *data);
 void	move_right(t_mlx_data *data);
 void	move_left(t_mlx_data *data);
+
+// flood_fill.c
+
+bool	has_valid_path(t_mlx_data *data);
 
 #endif // SO_LONG_H

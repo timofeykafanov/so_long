@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:58:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 17:29:59 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:21:09 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_list	*ft_lstlast(t_list *lst);
 // get_next_line
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 20
 # endif
 
 char	*get_next_line(int fd, bool *flag, bool free);

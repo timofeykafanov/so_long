@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:29:47 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 17:31:28 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:27:00 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,17 @@ static char	*extract_line(char *buffer)
 	return (str);
 }
 
-static char	*return_line(char **buffer)
+static char	*return_line(char **buffer, bool *flag)
 {
 	char	*line;
 	char	*tmp;
 
 	line = extract_line(*buffer);
 	if (!line)
+	{
+		*flag = true;
 		return (free_and_null(buffer), NULL);
+	}
 	tmp = ft_strdup_gnl(*buffer + ft_strlen_gnl(line));
 	free_and_null(buffer);
 	*buffer = tmp;
@@ -99,18 +102,20 @@ char	*get_next_line(int fd, bool *flag, bool clean)
 	static char	*buffer;
 	int			read_to_end;
 
-	(void)flag;
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (clean)
 		return (free(buffer), NULL);
 	while (1)
 	{
 		if (buffer && include_n(buffer))
-			return (return_line(&buffer));
+			return (return_line(&buffer, flag));
 		read_to_end = read_text(fd, &buffer);
 		if (!read_to_end)
+		{
+			*flag = true;
 			return (free_and_null(&buffer), NULL);
+		}
 		if (read_to_end == 2)
 			return (last_line(&buffer));
 	}

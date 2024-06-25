@@ -22,6 +22,7 @@ SRCS		= \
 			$(SRCSDIR)/free.c \
 			$(SRCSDIR)/put_border.c \
 			$(SRCSDIR)/movements.c \
+			$(SRCSDIR)/flood_fill.c
 
 SRCS_B		= \
 			$(SRCSDIR)/so_long_bonus.c \

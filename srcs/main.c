@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/24 20:03:04 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:08:41 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,52 +16,34 @@ int	handle_input(int key, t_mlx_data *data)
 {
 	if (key == XK_Escape)
 	{
-		ft_printf("The %d key (ESC) has been pressed\n", key);
 		mlx_destroy_window(data->mlx, data->wdw);
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 		free_map(data->map);
 		exit(1);
 	}
-	else if (key == XK_Up)
+	if (key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left)
 	{
-		move_up(data);
+		if (key == XK_Up)
+			move_up(data);
+		else if (key == XK_Down)
+			move_down(data);
+		else if (key == XK_Right)
+			move_right(data);
+		else if (key == XK_Left)
+			move_left(data);
 		display_game(*data);
 	}
-	else if (key == XK_Down)
-	{
-		move_down(data);
-		display_game(*data);
-	}
-	else if (key == XK_Right)
-	{
-		move_right(data);
-		display_game(*data);
-	}
-	else if (key == XK_Left)
-	{
-		move_left(data);
-		display_game(*data);
-	}
-	else
-		ft_printf("The %d key has been pressed\n", key);
 	return (SUCCESS);
 }
 
 int	so_long(char *file)
 {
-	// static t_mlx_data	data = {NULL, NULL, 0, 0, NULL, 0, 0};
 	static t_mlx_data	data;
 
 	ft_bzero(&data, 8);
-	printf("i = %d\n", data.flag == true);
-	data.map = read_map(file, &data);
-	if (!data.map)
+	if (init_map(&data, file) == ERROR)
 		return (ERROR);
-	data.width = count_width(data.map) * IMG_W;
-	data.height = count_height(data.map) * IMG_H + 45;
-	if (!is_map_valid(&data))
-		return (free_map(data.map), ERROR);
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (free_map(data.map), ERROR);
