@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/25 13:48:03 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:27:16 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
-// # include "mlx.h"
+// # include "../minilibx-linux/mlx.h"
+# include <mlx.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdbool.h>
@@ -46,12 +46,21 @@
 
 # define NEW_LINE '\n'
 
-# define PLAYER_IMG "./images/hero/hero_opened.xpm"
+# define P_IMG_0 "./images/hero/sprite_0.xpm"
+# define P_IMG_1 "./images/hero/sprite_1_l.xpm"
+# define P_IMG_2 "./images/hero/sprite_2_l.xpm"
+# define P_IMG_3 "./images/hero/sprite_3_l.xpm"
+
 # define ENEMY_IMG "./images/enemy/enemy.xpm"
 
 # define FLOOR_IMG "./images/floor/floor.xpm"
 
-# define COIN_IMG "./images/coins/coin.xpm"
+# define C_IMG_0 "./images/coins/coin1.xpm"
+# define C_IMG_1 "./images/coins/coin2.xpm"
+# define C_IMG_2 "./images/coins/coin3.xpm"
+# define C_IMG_3 "./images/coins/coin4.xpm"
+# define C_IMG_4 "./images/coins/coin55.xpm"
+# define C_IMG_5 "./images/coins/coin6.xpm"
 
 # define EXIT_IMG "./images/exit/color.xpm"
 
@@ -124,7 +133,7 @@ void	*put_border(t_mlx_data data, t_img *img, int y, int x);
 
 // display.c
 
-void	display_game(t_mlx_data data);
+int	display_game(t_mlx_data *data);
 
 // display_utils.c
 
@@ -137,8 +146,6 @@ void	*put_corner(t_mlx_data data, t_img *img, int y, int x);
 
 int		count_width(char **map);
 int		count_height(char **map);
-// char	**read_map(char *file_name, t_mlx_data *data);
-// bool	is_map_valid(t_mlx_data *data);
 int		init_map(t_mlx_data *data, char *file);
 
 // map_utils.c

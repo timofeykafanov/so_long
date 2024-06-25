@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/25 13:48:30 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:05:51 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	count_width(char **map)
 	int	width;
 
 	width = 0;
-	if (!map[0])
+	if (!map)
+	{
 		return (0);
+	}
 	while (map[0][width])
 		width++;
 	return (width);
@@ -31,6 +33,8 @@ int	count_height(char **map)
 	int	height;
 
 	height = 0;
+	if (!map[0])
+		return (0);
 	while (map[height])
 		height++;
 	return (height);
