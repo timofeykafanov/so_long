@@ -6,13 +6,11 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/25 17:05:51 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 09:19:52 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include <stdbool.h>
-#include <stdio.h>
 
 int	count_width(char **map)
 {
@@ -74,12 +72,14 @@ static bool	is_map_valid(t_mlx_data *data)
 	bool	shape;
 	bool	perimeter;
 	bool	start_and_end;
+	bool	valid_symbols;
 
 	coins = contains_coins(data);
 	shape = is_map_rectangular(data->map);
 	perimeter = is_perimeter_true(data->map);
 	start_and_end = has_start_and_and(data->map);
-	return (coins && shape && perimeter && start_and_end);
+	valid_symbols = has_only_valid_symbols(data->map);
+	return (coins && shape && perimeter && start_and_end && valid_symbols);
 }
 
 int	init_map(t_mlx_data *data, char *file)

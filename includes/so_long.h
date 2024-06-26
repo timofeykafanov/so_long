@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/25 17:27:16 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 09:16:32 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@
 # define ERR_MESS_READ "Error\nRrror reading file!\n"
 # define ERR_MESS_EMPTY "Error\nEmpty map!\n"
 # define ERR_MESS_PATH "Error\nThere is no valid path!\n"
+# define ERR_MESS_SYMB "Error\nInvalid symbol found!\n"
 
 typedef struct s_mlx_data
 {
@@ -167,5 +168,9 @@ void	move_left(t_mlx_data *data);
 // flood_fill.c
 
 bool	has_valid_path(t_mlx_data *data);
+
+// symbol_check.c
+
+bool	has_only_valid_symbols(char **map);
 
 #endif // SO_LONG_H

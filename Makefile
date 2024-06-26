@@ -22,10 +22,20 @@ SRCS		= \
 			$(SRCSDIR)/free.c \
 			$(SRCSDIR)/put_border.c \
 			$(SRCSDIR)/movements.c \
-			$(SRCSDIR)/flood_fill.c
+			$(SRCSDIR)/flood_fill.c \
+			$(SRCSDIR)/symbol_check.c \
 
 SRCS_B		= \
-			$(SRCSDIR)/so_long_bonus.c \
+			$(SRCSDIR)/main_bonus.c \
+			$(SRCSDIR)/display_bonus.c \
+			$(SRCSDIR)/display_utils.c \
+			$(SRCSDIR)/map.c \
+			$(SRCSDIR)/map_utils.c \
+			$(SRCSDIR)/free.c \
+			$(SRCSDIR)/put_border.c \
+			$(SRCSDIR)/movements_bonus.c \
+			$(SRCSDIR)/flood_fill.c \
+			$(SRCSDIR)/symbol_check_bouns.c \
 
 OBJSDIR		= objs
 OBJS		= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
@@ -59,7 +69,7 @@ $(NAME)	: ${OBJS}
 
 $(NAME_B)	: ${OBJS_B}
 		$(MAKE) -C ${LIBDIR} all
-		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT}
+		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT} -lX11 -lXext -lmlx
 
 ${OBJSDIR}/%.o	: %.c
 		@mkdir -p $(dir $@)

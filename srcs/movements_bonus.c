@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 10:34:20 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 08:56:58 by tkafanov         ###   ########.fr       */
+/*   Created: 2024/06/26 08:56:00 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/06/26 08:56:02 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	move_up(t_mlx_data *data)
 		data->map[y][x] = FLOOR;
 		data->map[y - 1][x] = PLAYER;
 		data->moves++;
-		ft_printf("Moves: %d\n", data->moves);
 	}
 }
 
@@ -59,7 +58,6 @@ void	move_down(t_mlx_data *data)
 		data->map[y][x] = FLOOR;
 		data->map[y + 1][x] = PLAYER;
 		data->moves++;
-		ft_printf("Moves: %d\n", data->moves);
 	}
 }
 
@@ -76,7 +74,6 @@ void	move_right(t_mlx_data *data)
 		data->map[y][x] = FLOOR;
 		data->map[y][x + 1] = PLAYER;
 		data->moves++;
-		ft_printf("Moves: %d\n", data->moves);
 	}
 }
 
@@ -93,6 +90,5 @@ void	move_left(t_mlx_data *data)
 		data->map[y][x] = FLOOR;
 		data->map[y][x - 1] = PLAYER;
 		data->moves++;
-		ft_printf("Moves: %d\n", data->moves);
 	}
 }

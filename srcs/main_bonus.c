@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 08:55:06 by tkafanov         ###   ########.fr       */
+/*   Created: 2024/06/26 08:23:05 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/06/26 09:17:50 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	so_long(char *file)
 	}
 	mlx_key_hook(data.wdw, handle_input, &data);
 	display_game(&data);
-	// mlx_loop_hook(data.mlx, display_game, &data);
+	mlx_loop_hook(data.mlx, display_game, &data);
 	mlx_loop(data.mlx);
 	// free_map(data.map);
 	return (1);
