@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 13:55:43 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:27:13 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	so_long(char *file)
 {
 	static t_mlx_data	data;
 
-	ft_bzero(&data, 8);
+	ft_bzero(&data, 10);
 	if (init_map(&data, file) == ERROR)
 		return (ERROR);
 	data.mlx = mlx_init();

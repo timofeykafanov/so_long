@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 14:04:44 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:55:15 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <time.h>
 
 #include <stdio.h>
 
@@ -36,13 +37,13 @@
 
 # define GAME "Packman"
 
-# define WALL '1'
-# define FLOOR '0'
-# define PLAYER 'P'
-# define COIN 'C'
-# define EXIT 'E'
-# define ENEMY 'G'
-# define FILL 'F'
+# define WALL	'1'
+# define FLOOR	'0'
+# define PLAYER	'P'
+# define COIN	'C'
+# define EXIT	'E'
+# define ENEMY	'G'
+# define FILL	'F'
 
 # define NEW_LINE '\n'
 
@@ -64,7 +65,21 @@
 # define P_IMG_2_D "./images/hero/sprite_2_d.xpm"
 # define P_IMG_3_D "./images/hero/sprite_3_d.xpm"
 
-# define ENEMY_IMG "./images/enemy/enemy.xpm"
+# define ENEMY_RED_0 "./images/enemy/red/red_0.xpm"
+# define ENEMY_RED_1 "./images/enemy/red/red_1.xpm"
+# define ENEMY_RED_2 "./images/enemy/red/red_2.xpm"
+
+# define ENEMY_GREEN_0 "./images/enemy/green/green_0.xpm"
+# define ENEMY_GREEN_1 "./images/enemy/green/green_1.xpm"
+# define ENEMY_GREEN_2 "./images/enemy/green/green_2.xpm"
+
+# define ENEMY_SKY_0 "./images/enemy/sky/sky_0.xpm"
+# define ENEMY_SKY_1 "./images/enemy/sky/sky_1.xpm"
+# define ENEMY_SKY_2 "./images/enemy/sky/sky_2.xpm"
+
+# define ENEMY_PURPLE_0 "./images/enemy/purple/purple_0.xpm"
+# define ENEMY_PURPLE_1 "./images/enemy/purple/purple_1.xpm"
+# define ENEMY_PURPLE_2 "./images/enemy/purple/purple_2.xpm"
 
 # define FLOOR_IMG "./images/floor/floor.xpm"
 
@@ -77,34 +92,34 @@
 
 # define EXIT_IMG "./images/exit/color.xpm"
 
-# define WALL_IMG "./images/walls/wall.xpm"
-# define RTLB "./images/walls/wall_rtlb.xpm"
-# define RBL "./images/walls/wall_rbl.xpm"
-# define LTB "./images/walls/wall_ltb.xpm"
-# define RTL "./images/walls/wall_rtl.xpm"
-# define RTB "./images/walls/wall_rtb.xpm"
-# define RL "./images/walls/wall_rl.xpm"
-# define TB "./images/walls/wall_tb.xpm"
-# define RB "./images/walls/wall_rb.xpm"
-# define LB "./images/walls/wall_lb.xpm"
-# define RT "./images/walls/wall_rt.xpm"
-# define LT "./images/walls/wall_lt.xpm"
-# define B "./images/walls/wall_b.xpm"
-# define T "./images/walls/wall_t.xpm"
-# define R "./images/walls/wall_r.xpm"
-# define L "./images/walls/wall_l.xpm"
+# define WALL_IMG	"./images/walls/wall.xpm"
+# define RTLB		"./images/walls/wall_rtlb.xpm"
+# define RBL		"./images/walls/wall_rbl.xpm"
+# define LTB		"./images/walls/wall_ltb.xpm"
+# define RTL		"./images/walls/wall_rtl.xpm"
+# define RTB		"./images/walls/wall_rtb.xpm"
+# define RL			"./images/walls/wall_rl.xpm"
+# define TB			"./images/walls/wall_tb.xpm"
+# define RB			"./images/walls/wall_rb.xpm"
+# define LB			"./images/walls/wall_lb.xpm"
+# define RT			"./images/walls/wall_rt.xpm"
+# define LT			"./images/walls/wall_lt.xpm"
+# define B			"./images/walls/wall_b.xpm"
+# define T			"./images/walls/wall_t.xpm"
+# define R			"./images/walls/wall_r.xpm"
+# define L			"./images/walls/wall_l.xpm"
 
-# define ERR_MESS_PER "Error\nThe map should be surrounded by walls!\n"
-# define ERR_MESS_EXTEN "Error\nInvalid file extention!\n"
-# define ERR_MESS_FILE "Error\nFile doesn't exist!\n"
-# define ERR_MESS_SHAPE "Error\nMap should be rectangular!\n"
-# define ERR_MESS_PLAYER "Error\nThere should be 1 player!\n"
-# define ERR_MESS_EXIT "Error\nThere should be 1 exit!\n"
-# define ERR_MESS_COINS "Error\nThere should be at least 1 collectible!\n"
-# define ERR_MESS_READ "Error\nRrror reading file!\n"
-# define ERR_MESS_EMPTY "Error\nEmpty map!\n"
-# define ERR_MESS_PATH "Error\nThere is no valid path!\n"
-# define ERR_MESS_SYMB "Error\nInvalid symbol found!\n"
+# define ERR_MESS_PER		"Error\nThe map should be surrounded by walls!\n"
+# define ERR_MESS_EXTEN		"Error\nInvalid file extention!\n"
+# define ERR_MESS_FILE		"Error\nFile doesn't exist!\n"
+# define ERR_MESS_SHAPE		"Error\nMap should be rectangular!\n"
+# define ERR_MESS_PLAYER	"Error\nThere should be 1 player!\n"
+# define ERR_MESS_EXIT		"Error\nThere should be 1 exit!\n"
+# define ERR_MESS_COINS		"Error\nThere should be at least 1 collectible!\n"
+# define ERR_MESS_READ		"Error\nRrror reading file!\n"
+# define ERR_MESS_EMPTY		"Error\nEmpty map!\n"
+# define ERR_MESS_PATH		"Error\nThere is no valid path!\n"
+# define ERR_MESS_SYMB		"Error\nInvalid symbol found!\n"
 
 typedef struct s_mlx_data
 {
@@ -117,6 +132,8 @@ typedef struct s_mlx_data
 	int		coins;
 	bool	flag;
 	int		direction;
+	int		enemy;
+	int		frame;
 }	t_mlx_data;
 
 typedef struct s_img
@@ -198,5 +215,13 @@ void	*put_player_sprite(t_mlx_data data, t_img *img, int frame);
 // sprite_coin_bonus.c
 
 void	*put_coin_sprite(t_mlx_data data, t_img *img, int frame);
+
+// sprite_enemy_bonus.c
+
+void	*put_enemy_sprite(t_mlx_data *data, t_img *img, int frame);
+
+// move_enemies_bonus.c
+
+void	move_enemies(char **map);
 
 #endif // SO_LONG_H

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 10:34:20 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 12:54:22 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:45:59 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	move_up(t_mlx_data *data)
 			if (data->coins == 0)
 			{
 				data->moves++;
-				ft_printf("Result: %d\n", data->moves);
+				ft_printf("You won! Result: %d\n", data->moves);
 				close_game(data);
 			}
 			return ;
@@ -76,7 +76,7 @@ void	move_down(t_mlx_data *data)
 			if (data->coins == 0)
 			{
 				data->moves++;
-				ft_printf("Result: %d\n", data->moves);
+				ft_printf("You won! Result: %d\n", data->moves);
 				close_game(data);
 			}
 			return ;
@@ -107,7 +107,7 @@ void	move_right(t_mlx_data *data)
 			if (data->coins == 0)
 			{
 				data->moves++;
-				ft_printf("Result: %d\n", data->moves);
+				ft_printf("You won! Result: %d\n", data->moves);
 				close_game(data);
 			}
 			return ;
@@ -138,7 +138,7 @@ void	move_left(t_mlx_data *data)
 			if (data->coins == 0)
 			{
 				data->moves++;
-				ft_printf("Result: %d\n", data->moves);
+				ft_printf("You won! Result: %d\n", data->moves);
 				close_game(data);
 			}
 			return ;

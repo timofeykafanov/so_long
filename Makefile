@@ -35,11 +35,13 @@ SRCS_B		= \
 			$(SRCSDIR)/free.c \
 			$(SRCSDIR)/put_border.c \
 			$(SRCSDIR)/movements_bonus.c \
-			$(SRCSDIR)/flood_fill.c \
+			$(SRCSDIR)/flood_fill_bonus.c \
 			$(SRCSDIR)/symbol_check_bouns.c \
 			$(SRCSDIR)/close.c \
 			$(SRCSDIR)/sprite_player_bonus.c \
 			$(SRCSDIR)/sprite_coin_bonus.c \
+			$(SRCSDIR)/sprite_enemy_bonus.c \
+			$(SRCSDIR)/move_enemies_bonus.c \
 
 OBJSDIR		= objs
 OBJS		= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))

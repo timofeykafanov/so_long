@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 11:03:03 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:43:38 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	**read_map(char *file_name, t_mlx_data *data)
 	return (map);
 }
 
-static bool	is_map_valid(t_mlx_data *data)
+static inline bool	is_map_valid(t_mlx_data *data)
 {
 	bool	coins;
 	bool	shape;
