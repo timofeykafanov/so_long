@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:23:05 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 12:42:25 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:55:25 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	handle_input(int key, t_mlx_data *data)
 			move_right(data);
 		else if (key == XK_Left)
 			move_left(data);
-		// display_game(data);
 	}
 	return (SUCCESS);
 }
@@ -54,7 +53,6 @@ int	so_long(char *file)
 	display_game(&data);
 	mlx_loop_hook(data.mlx, display_game, &data);
 	mlx_loop(data.mlx);
-	// free_map(data.map);
 	return (1);
 }
 

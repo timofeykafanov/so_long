@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:24:44 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 13:36:55 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:05:38 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,18 @@ static void	*put_wall(t_mlx_data data, t_img *img, int y, int x)
 	return (NULL);
 }
 
-static t_img	*put_img(t_mlx_data data, char c, int y, int x, int frame)
+static t_img	*put_img(t_mlx_data data, char c, t_coord coord, int frame)
 {
 	static t_img	img = {NULL, IMG_W, IMG_H};
 
 	if (c == WALL)
-		img.img = put_wall(data, &img, y, x);
+		img.img = put_wall(data, &img, coord.y, coord.x);
 	else if (c == FLOOR)
 		img.img = mlx_xpm_file_to_image(data.mlx, FLOOR_IMG, &img.w, &img.h);
 	else if (c == PLAYER)
-	{
 		img.img = put_player_sprite(data, &img, frame);
-	}
 	else if (c == COIN)
-	{
-		if (frame < 2)
-			img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_0, &img.w, &img.h);
-		else if (frame < 4)
-			img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_1, &img.w, &img.h);
-		else if (frame < 6)
-			img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_2, &img.w, &img.h);
-		else if (frame < 8)
-			img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_3, &img.w, &img.h);
-		else if (frame < 10)
-			img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_4, &img.w, &img.h);
-		else
-			img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_5, &img.w, &img.h);
-	}
+		img.img = put_coin_sprite(data, &img, frame);
 	else if (c == EXIT)
 		img.img = mlx_xpm_file_to_image(data.mlx, EXIT_IMG, &img.w, &img.h);
 	else if (c == ENEMY)
@@ -72,15 +57,15 @@ static t_img	*put_img(t_mlx_data data, char c, int y, int x, int frame)
 	return (&img);
 }
 
-static void	display_img(t_mlx_data data, int y, int x, int frame)
+static void	display_img(t_mlx_data data, t_coord coord, int frame)
 {
 	t_img	*img;
 
-	img = put_img(data, data.map[y][x], y, x, frame);
+	img = put_img(data, data.map[coord.y][coord.x], coord, frame);
 	if (!img->img)
 		return ;
 	mlx_put_image_to_window(data.mlx, data.wdw, img->img, \
-		x * img->w, y * img->h + 45);
+		coord.x * img->w, coord.y * img->h + 45);
 	mlx_destroy_image(data.mlx, img->img);
 }
 
@@ -96,7 +81,8 @@ void	display_moves(t_mlx_data data)
 	moves = ft_strjoin("Moves: ", prev);
 	if (!moves)
 		return (free(prev));
-	mlx_string_put(data.mlx, data.wdw, data.width * IMG_W / 2 - 25, 30, 0, moves);
+	mlx_string_put(data.mlx, data.wdw, \
+		data.width * IMG_W / 2 - 25, 30, 0, moves);
 	free(prev);
 	free(moves);
 	num = ft_itoa(data.moves);
@@ -114,20 +100,19 @@ void	display_moves(t_mlx_data data)
 int	display_game(t_mlx_data *data)
 {
 	static int	frame = 0;
-	int		y;
-	int		x;
+	t_coord		coord;
 
 	display_moves(*data);
-	y = 0;
-	while (y < data->height)
+	coord.y = 0;
+	while (coord.y < data->height)
 	{
-		x = 0;
-		while (x < data->width)
+		coord.x = 0;
+		while (coord.x < data->width)
 		{
-			display_img(*data, y, x, frame);
-			x++;
+			display_img(*data, coord, frame);
+			coord.x++;
 		}
-		y++;
+		coord.y++;
 	}
 	frame++;
 	if (frame == 12)
