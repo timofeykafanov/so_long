@@ -68,14 +68,14 @@ bonus	: $(NAME_B)
 
 $(NAME)	: ${OBJS}
 		$(MAKE) -C ${LIBDIR} all
-		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT} -lX11 -lXext -lmlx
+		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT} -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 
 # -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 # -lX11 -lXext -lmlx
 
 $(NAME_B)	: ${OBJS_B}
 		$(MAKE) -C ${LIBDIR} all
-		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT} -lX11 -lXext -lmlx
+		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT} -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 
 ${OBJSDIR}/%.o	: %.c
 		@mkdir -p $(dir $@)

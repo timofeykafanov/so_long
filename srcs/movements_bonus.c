@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:56:00 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 16:45:43 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:51:23 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	move_up(t_mlx_data *data)
 		}
 		if (data->map[y - 1][x] == COIN)
 			data->coins--;
-		move_enemies(data->map);
 		data->map[y][x] = FLOOR;
 		data->map[y - 1][x] = PLAYER;
+		move_enemies(data);
 		data->moves++;
 		data->direction = 1;
 	}
@@ -93,9 +93,9 @@ void	move_down(t_mlx_data *data)
 		}
 		if (data->map[y + 1][x] == COIN)
 			data->coins--;
-		move_enemies(data->map);
 		data->map[y][x] = FLOOR;
 		data->map[y + 1][x] = PLAYER;
+		move_enemies(data);
 		data->moves++;
 		data->direction = 3;
 	}
@@ -129,9 +129,9 @@ void	move_right(t_mlx_data *data)
 		}
 		if (data->map[y][x + 1] == COIN)
 			data->coins--;
-		move_enemies(data->map);
 		data->map[y][x] = FLOOR;
 		data->map[y][x + 1] = PLAYER;
+		move_enemies(data);
 		data->moves++;
 		data->direction = 2;
 	}
@@ -165,9 +165,9 @@ void	move_left(t_mlx_data *data)
 		}
 		if (data->map[y][x - 1] == COIN)
 			data->coins--;
-		move_enemies(data->map);
 		data->map[y][x] = FLOOR;
 		data->map[y][x - 1] = PLAYER;
+		move_enemies(data);
 		data->moves++;
 		data->direction = 0;
 	}

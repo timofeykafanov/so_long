@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 16:55:15 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:51:39 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
-// # include "../minilibx-linux/mlx.h"
-# include <mlx.h>
+# include "../minilibx-linux/mlx.h"
+// # include <mlx.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdbool.h>
@@ -222,6 +222,6 @@ void	*put_enemy_sprite(t_mlx_data *data, t_img *img, int frame);
 
 // move_enemies_bonus.c
 
-void	move_enemies(char **map);
+void	move_enemies(t_mlx_data *data);
 
 #endif // SO_LONG_H
