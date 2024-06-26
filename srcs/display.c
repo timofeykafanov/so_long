@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 09:19:13 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:31:36 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	*put_wall(t_mlx_data data, t_img *img, int y, int x)
 {
-	if (y == 0 || x == 0 || y == count_height(data.map) - 1
-		|| x == count_width(data.map) - 1)
+	if (y == 0 || x == 0 || y == data.height - 1
+		|| x == data.width - 1)
 		return (put_border(data, img, y, x));
 	else if (is_cross(data, y, x))
 		return (put_cross(data, img, y, x));
@@ -47,13 +47,11 @@ static t_img	*put_img(t_mlx_data data, char c, int y, int x)
 	else if (c == FLOOR)
 		img.img = mlx_xpm_file_to_image(data.mlx, FLOOR_IMG, &img.w, &img.h);
 	else if (c == PLAYER)
-		img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_2, &img.w, &img.h);
+		img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_3, &img.w, &img.h);
 	else if (c == COIN)
 		img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_0, &img.w, &img.h);
 	else if (c == EXIT)
 		img.img = mlx_xpm_file_to_image(data.mlx, EXIT_IMG, &img.w, &img.h);
-	else if (c == ENEMY)
-		img.img = mlx_xpm_file_to_image(data.mlx, ENEMY_IMG, &img.w, &img.h);
 	return (&img);
 }
 
@@ -65,7 +63,7 @@ static void	display_img(t_mlx_data data, int y, int x)
 	if (!img->img)
 		return ;
 	mlx_put_image_to_window(data.mlx, data.wdw, img->img, \
-		x * img->w, y * img->h + 45);
+		x * img->w, y * img->h);
 	mlx_destroy_image(data.mlx, img->img);
 }
 
@@ -75,10 +73,10 @@ int	display_game(t_mlx_data *data)
 	int		x;
 
 	y = 0;
-	while (y < 24)
+	while (y < data->height)
 	{
 		x = 0;
-		while (x < count_width(data->map))
+		while (x < data->width)
 		{
 			display_img(*data, y, x);
 			x++;

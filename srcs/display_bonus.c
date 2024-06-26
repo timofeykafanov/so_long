@@ -6,17 +6,16 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:24:44 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 09:19:24 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:30:21 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include <unistd.h>
 
 static void	*put_wall(t_mlx_data data, t_img *img, int y, int x)
 {
-	if (y == 0 || x == 0 || y == count_height(data.map) - 1
-		|| x == count_width(data.map) - 1)
+	if (y == 0 || x == 0 || y == data.height - 1
+		|| x == data.width - 1)
 		return (put_border(data, img, y, x));
 	else if (is_cross(data, y, x))
 		return (put_cross(data, img, y, x));
@@ -108,7 +107,7 @@ void	display_moves(t_mlx_data data)
 	moves = ft_strjoin("Moves: ", prev);
 	if (!moves)
 		return (free(prev));
-	mlx_string_put(data.mlx, data.wdw, data.width / 2 - 25, 30, 0, moves);
+	mlx_string_put(data.mlx, data.wdw, data.width * IMG_W / 2 - 25, 30, 0, moves);
 	free(prev);
 	free(moves);
 	num = ft_itoa(data.moves);
@@ -117,7 +116,8 @@ void	display_moves(t_mlx_data data)
 	moves = ft_strjoin("Moves: ", num);
 	if (!moves)
 		return (free(num));
-	mlx_string_put(data.mlx, data.wdw, data.width / 2 - 25, 30, 7777777, moves);
+	mlx_string_put(data.mlx, data.wdw, data.width * IMG_W / 2 - 25, \
+		30, 7777777, moves);
 	free(num);
 	free(moves);
 }
@@ -130,10 +130,10 @@ int	display_game(t_mlx_data *data)
 
 	display_moves(*data);
 	y = 0;
-	while (y < 24)
+	while (y < data->height)
 	{
 		x = 0;
-		while (x < count_width(data->map))
+		while (x < data->width)
 		{
 			display_img(*data, y, x, frame);
 			x++;

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 09:19:52 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:03:03 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ int	init_map(t_mlx_data *data, char *file)
 	data->map = read_map(file, data);
 	if (!data->map)
 		return (ERROR);
-	data->width = count_width(data->map) * IMG_W;
+	data->width = count_width(data->map);
 	if (!data->width)
 		return (ft_printf(ERR_MESS_EMPTY), ERROR);
-	data->height = count_height(data->map) * IMG_H + 45;
+	data->height = count_height(data->map);
 	if (!is_map_valid(data))
 		return (free_map(data->map), ERROR);
 	path = has_valid_path(data);

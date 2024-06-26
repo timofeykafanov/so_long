@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:23:05 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 09:17:50 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:30:37 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	so_long(char *file)
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (free_map(data.map), ERROR);
-	data.wdw = mlx_new_window(data.mlx, data.width, data.height, GAME);
+	data.wdw = mlx_new_window(data.mlx, data.width * IMG_W, \
+		data.height * IMG_H + 45, GAME);
 	if (!data.wdw)
 	{
 		free_map(data.map);

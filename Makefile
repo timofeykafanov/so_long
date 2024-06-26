@@ -24,6 +24,7 @@ SRCS		= \
 			$(SRCSDIR)/movements.c \
 			$(SRCSDIR)/flood_fill.c \
 			$(SRCSDIR)/symbol_check.c \
+			$(SRCSDIR)/close.c \
 
 SRCS_B		= \
 			$(SRCSDIR)/main_bonus.c \
@@ -36,6 +37,7 @@ SRCS_B		= \
 			$(SRCSDIR)/movements_bonus.c \
 			$(SRCSDIR)/flood_fill.c \
 			$(SRCSDIR)/symbol_check_bouns.c \
+			$(SRCSDIR)/close.c \
 
 OBJSDIR		= objs
 OBJS		= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))

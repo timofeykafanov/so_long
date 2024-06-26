@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 13:43:39 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/25 13:47:02 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:09:26 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	flood_fill(t_mlx_data *data, int y, int x, char to_fill)
 {
-	if (x == 0 || y == 0 || x == count_width(data->map) - 1
-		|| y == count_height(data->map) - 1 || (data->map[y][x] == WALL
+	if (x == 0 || y == 0 || x == data->width - 1
+		|| y == data->height - 1 || (data->map[y][x] == WALL
 		|| data->map[y][x] == EXIT || data->map[y][x] == to_fill))
 		return ;
 	data->map[y][x] = to_fill;

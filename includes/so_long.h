@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 09:16:32 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:11:54 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	*put_border(t_mlx_data data, t_img *img, int y, int x);
 
 // display.c
 
-int	display_game(t_mlx_data *data);
+int		display_game(t_mlx_data *data);
 
 // display_utils.c
 
@@ -172,5 +172,9 @@ bool	has_valid_path(t_mlx_data *data);
 // symbol_check.c
 
 bool	has_only_valid_symbols(char **map);
+
+// close.c
+
+void	close_game(t_mlx_data *data);
 
 #endif // SO_LONG_H
