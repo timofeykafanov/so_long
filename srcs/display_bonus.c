@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:24:44 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 12:30:21 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:36:55 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,7 @@ static t_img	*put_img(t_mlx_data data, char c, int y, int x, int frame)
 		img.img = mlx_xpm_file_to_image(data.mlx, FLOOR_IMG, &img.w, &img.h);
 	else if (c == PLAYER)
 	{
-		if (frame < 2)
-			img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_0, &img.w, &img.h);
-		else if (frame < 4)
-			img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_1, &img.w, &img.h);
-		else if (frame < 6)
-			img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_2, &img.w, &img.h);
-		else if (frame < 8)
-			img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_3, &img.w, &img.h);
-		else if (frame < 10)
-			img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_2, &img.w, &img.h);
-		else
-			img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_1, &img.w, &img.h);
+		img.img = put_player_sprite(data, &img, frame);
 	}
 	else if (c == COIN)
 	{

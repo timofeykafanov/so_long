@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 13:00:53 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:36:59 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,5 +190,9 @@ bool	has_only_valid_symbols(char **map);
 // close.c
 
 void	close_game(t_mlx_data *data);
+
+// sprite.c
+
+void	*put_player_sprite(t_mlx_data data, t_img *img, int frame);
 
 #endif // SO_LONG_H

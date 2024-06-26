@@ -38,6 +38,7 @@ SRCS_B		= \
 			$(SRCSDIR)/flood_fill.c \
 			$(SRCSDIR)/symbol_check_bouns.c \
 			$(SRCSDIR)/close.c \
+			$(SRCSDIR)/sprite.c \
 
 OBJSDIR		= objs
 OBJS		= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
