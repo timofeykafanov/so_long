@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 12:31:42 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:08:03 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@
 int	handle_input(int key, t_mlx_data *data)
 {
 	if (key == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx, data->wdw);
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-		free_map(data->map);
-		exit(1);
-	}
+		close_game(data);
 	if (key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left)
 	{
 		if (key == XK_Up)
@@ -60,7 +54,7 @@ int	so_long(char *file)
 	display_game(&data);
 	// mlx_loop_hook(data.mlx, display_game, &data);
 	mlx_loop(data.mlx);
-	// free_map(data.map);
+	free_map(data.map);
 	return (1);
 }
 

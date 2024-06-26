@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 11:11:54 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:00:53 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,22 @@
 # define NEW_LINE '\n'
 
 # define P_IMG_0 "./images/hero/sprite_0.xpm"
-# define P_IMG_1 "./images/hero/sprite_1_l.xpm"
-# define P_IMG_2 "./images/hero/sprite_2_l.xpm"
-# define P_IMG_3 "./images/hero/sprite_3_l.xpm"
+
+# define P_IMG_1_L "./images/hero/sprite_1_l.xpm"
+# define P_IMG_2_L "./images/hero/sprite_2_l.xpm"
+# define P_IMG_3_L "./images/hero/sprite_3_l.xpm"
+
+# define P_IMG_1_U "./images/hero/sprite_1_u.xpm"
+# define P_IMG_2_U "./images/hero/sprite_2_u.xpm"
+# define P_IMG_3_U "./images/hero/sprite_3_u.xpm"
+
+# define P_IMG_1_R "./images/hero/sprite_1_r.xpm"
+# define P_IMG_2_R "./images/hero/sprite_2_r.xpm"
+# define P_IMG_3_R "./images/hero/sprite_3_r.xpm"
+
+# define P_IMG_1_D "./images/hero/sprite_1_d.xpm"
+# define P_IMG_2_D "./images/hero/sprite_2_d.xpm"
+# define P_IMG_3_D "./images/hero/sprite_3_d.xpm"
 
 # define ENEMY_IMG "./images/enemy/enemy.xpm"
 
@@ -103,6 +116,7 @@ typedef struct s_mlx_data
 	int		moves;
 	int		coins;
 	bool	flag;
+	int		direction;
 }	t_mlx_data;
 
 typedef struct s_img

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 12:31:36 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/26 13:03:01 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,18 @@ static void	*put_wall(t_mlx_data data, t_img *img, int y, int x)
 	return (NULL);
 }
 
+static void	*put_player(t_mlx_data data, t_img *img)
+{
+	if (data.direction == 0)
+		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_L, &img->w, &img->h));
+	else if (data.direction == 1)
+		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_U, &img->w, &img->h));
+	else if (data.direction == 2)
+		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_R, &img->w, &img->h));
+	else
+		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_D, &img->w, &img->h));
+}
+
 static t_img	*put_img(t_mlx_data data, char c, int y, int x)
 {
 	static t_img	img = {NULL, IMG_W, IMG_H};
@@ -47,7 +59,7 @@ static t_img	*put_img(t_mlx_data data, char c, int y, int x)
 	else if (c == FLOOR)
 		img.img = mlx_xpm_file_to_image(data.mlx, FLOOR_IMG, &img.w, &img.h);
 	else if (c == PLAYER)
-		img.img = mlx_xpm_file_to_image(data.mlx, P_IMG_3, &img.w, &img.h);
+		img.img = put_player(data, &img);
 	else if (c == COIN)
 		img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_0, &img.w, &img.h);
 	else if (c == EXIT)
