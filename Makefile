@@ -25,6 +25,7 @@ SRCS		= \
 			$(SRCSDIR)/flood_fill.c \
 			$(SRCSDIR)/symbol_check.c \
 			$(SRCSDIR)/close.c \
+			$(SRCSDIR)/movements_utils.c \
 
 SRCS_B		= \
 			$(SRCSDIR)/main_bonus.c \
@@ -42,6 +43,10 @@ SRCS_B		= \
 			$(SRCSDIR)/sprite_coin_bonus.c \
 			$(SRCSDIR)/sprite_enemy_bonus.c \
 			$(SRCSDIR)/move_enemies_bonus.c \
+			$(SRCSDIR)/timeout_bonus.c \
+			$(SRCSDIR)/move_enemies_utils_bonus.c \
+			$(SRCSDIR)/movements_utils_bonus.c \
+
 
 OBJSDIR		= objs
 OBJS		= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))

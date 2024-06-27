@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:17:33 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 14:47:15 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:48:00 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@ static void	*sprite_red(t_mlx_data data, t_img *img, int frame)
 static void	*sprite_purple(t_mlx_data data, t_img *img, int frame)
 {
 	if (frame < 3)
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_0, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_0, \
+		&img->w, &img->h));
 	else if (frame < 6)
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_1, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_1, \
+		&img->w, &img->h));
 	else if (frame < 9)
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_0, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_0, \
+		&img->w, &img->h));
 	else
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_2, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_PURPLE_2, \
+		&img->w, &img->h));
 	return (NULL);
 }
 
@@ -54,13 +58,17 @@ static void	*sprite_sky(t_mlx_data data, t_img *img, int frame)
 static void	*sprite_green(t_mlx_data data, t_img *img, int frame)
 {
 	if (frame < 3)
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_0, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_0, \
+		&img->w, &img->h));
 	else if (frame < 6)
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_1, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_1, \
+		&img->w, &img->h));
 	else if (frame < 9)
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_0, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_0, \
+		&img->w, &img->h));
 	else
-		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_2, &img->w, &img->h));
+		return (mlx_xpm_file_to_image(data.mlx, ENEMY_GREEN_2, \
+		&img->w, &img->h));
 	return (NULL);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:24:44 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 20:43:10 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:43:50 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,7 @@ int	display_game(t_mlx_data *data)
 		}
 		coord.y++;
 	}
-	if (data->width * data->height < 100)
-		usleep(2000);
-	if (data->width * data->height < 200)
-		usleep(2000);
-	if (data->width * data->height < 300)
-		usleep(2000);
-	if (data->width * data->height < 400)
-		usleep(2000);
-	if (data->width * data->height < 500)
-		usleep(2000);
+	timeout(data);
 	data->frame++;
 	if (data->frame == 12)
 		data->frame = 0;

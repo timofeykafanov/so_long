@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 10:34:20 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 16:45:59 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:03:56 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,7 @@ void	move_up(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y - 1][x] == FLOOR || data->map[y - 1][x] == COIN
 		||data->map[y - 1][x] == EXIT)
-	{
-		if (data->map[y - 1][x] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y - 1][x] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y - 1][x] = PLAYER;
-		data->moves++;
-		data->direction = 1;
-		ft_printf("Moves: %d\n", data->moves);
-	}
+		handle_up(data, y, x);
 }
 
 void	move_down(t_mlx_data *data)
@@ -70,25 +52,7 @@ void	move_down(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y + 1][x] == FLOOR || data->map[y + 1][x] == COIN
 		||data->map[y + 1][x] == EXIT)
-	{
-		if (data->map[y + 1][x] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y + 1][x] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y + 1][x] = PLAYER;
-		data->moves++;
-		data->direction = 3;
-		ft_printf("Moves: %d\n", data->moves);
-	}
+		handle_down(data, y, x);
 }
 
 void	move_right(t_mlx_data *data)
@@ -101,25 +65,7 @@ void	move_right(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y][x + 1] == FLOOR || data->map[y][x + 1] == COIN
 		|| data->map[y][x + 1] == EXIT)
-	{
-		if (data->map[y][x + 1] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y][x + 1] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y][x + 1] = PLAYER;
-		data->moves++;
-		data->direction = 2;
-		ft_printf("Moves: %d\n", data->moves);
-	}
+		handle_right(data, y, x);
 }
 
 void	move_left(t_mlx_data *data)
@@ -132,23 +78,5 @@ void	move_left(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y][x - 1] == FLOOR || data->map[y][x - 1] == COIN
 		|| data->map[y][x - 1] == EXIT)
-	{
-		if (data->map[y][x - 1] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y][x - 1] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y][x - 1] = PLAYER;
-		data->moves++;
-		data->direction = 0;
-		ft_printf("Moves: %d\n", data->moves);
-	}
+		handle_left(data, y, x);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:56:00 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 18:51:23 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:10:07 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,7 @@ void	move_up(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y - 1][x] == FLOOR || data->map[y - 1][x] == COIN
 		|| data->map[y - 1][x] == EXIT || data->map[y - 1][x] == ENEMY)
-	{
-		if (data->map[y - 1][x] == ENEMY)
-		{
-			ft_printf("You died!\n");
-			close_game(data);
-		}
-		if (data->map[y - 1][x] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y - 1][x] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y - 1][x] = PLAYER;
-		move_enemies(data);
-		data->moves++;
-		data->direction = 1;
-	}
+		handle_up(data, y, x);
 }
 
 void	move_down(t_mlx_data *data)
@@ -75,30 +52,7 @@ void	move_down(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y + 1][x] == FLOOR || data->map[y + 1][x] == COIN
 		|| data->map[y + 1][x] == EXIT || data->map[y + 1][x] == ENEMY)
-	{
-		if (data->map[y + 1][x] == ENEMY)
-		{
-			ft_printf("You died!\n");
-			close_game(data);
-		}
-		if (data->map[y + 1][x] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y + 1][x] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y + 1][x] = PLAYER;
-		move_enemies(data);
-		data->moves++;
-		data->direction = 3;
-	}
+		handle_down(data, y, x);
 }
 
 void	move_right(t_mlx_data *data)
@@ -111,30 +65,7 @@ void	move_right(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y][x + 1] == FLOOR || data->map[y][x + 1] == COIN
 		|| data->map[y][x + 1] == EXIT || data->map[y][x + 1] == ENEMY)
-	{
-		if (data->map[y][x + 1] == ENEMY)
-		{
-			ft_printf("You died!\n");
-			close_game(data);
-		}
-		if (data->map[y][x + 1] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y][x + 1] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y][x + 1] = PLAYER;
-		move_enemies(data);
-		data->moves++;
-		data->direction = 2;
-	}
+		handle_right(data, y, x);
 }
 
 void	move_left(t_mlx_data *data)
@@ -147,28 +78,5 @@ void	move_left(t_mlx_data *data)
 	find_player(data, &y, &x);
 	if (data->map[y][x - 1] == FLOOR || data->map[y][x - 1] == COIN
 		|| data->map[y][x - 1] == EXIT || data->map[y][x - 1] == ENEMY)
-	{
-		if (data->map[y][x - 1] == ENEMY)
-		{
-			ft_printf("You died!\n");
-			close_game(data);
-		}
-		if (data->map[y][x - 1] == EXIT)
-		{
-			if (data->coins == 0)
-			{
-				data->moves++;
-				ft_printf("You won! Result: %d\n", data->moves);
-				close_game(data);
-			}
-			return ;
-		}
-		if (data->map[y][x - 1] == COIN)
-			data->coins--;
-		data->map[y][x] = FLOOR;
-		data->map[y][x - 1] = PLAYER;
-		move_enemies(data);
-		data->moves++;
-		data->direction = 0;
-	}
+		handle_left(data, y, x);
 }

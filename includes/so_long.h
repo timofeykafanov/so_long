@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 18:51:39 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:05:49 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <time.h>
-
-#include <stdio.h>
 
 # define SUCCESS 0
 # define ERROR 1
@@ -196,6 +194,13 @@ void	move_down(t_mlx_data *data);
 void	move_right(t_mlx_data *data);
 void	move_left(t_mlx_data *data);
 
+// movements_utils.c
+
+void	handle_up(t_mlx_data *data, int y, int x);
+void	handle_right(t_mlx_data *data, int y, int x);
+void	handle_left(t_mlx_data *data, int y, int x);
+void	handle_down(t_mlx_data *data, int y, int x);
+
 // flood_fill.c
 
 bool	has_valid_path(t_mlx_data *data);
@@ -223,5 +228,16 @@ void	*put_enemy_sprite(t_mlx_data *data, t_img *img, int frame);
 // move_enemies_bonus.c
 
 void	move_enemies(t_mlx_data *data);
+
+// move_enemies_utils_bonus.c
+
+void	move_enemy_right(t_mlx_data *data, int *i, int *j);
+void	move_enemy_left(t_mlx_data *data, int *i, int *j);
+void	move_enemy_up(t_mlx_data *data, int *i, int *j);
+void	move_enemy_down(t_mlx_data *data, int *i, int *j);
+
+// timeout_bonus.c
+
+void	timeout(t_mlx_data *data);
 
 #endif // SO_LONG_H
