@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:15:10 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/25 11:03:07 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:29:44 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	is_map_rectangular(char **map)
 	while (map[i + 1])
 	{
 		if (ft_strlen(map[i]) != ft_strlen(map[i + 1]))
-			return (ft_printf(ERR_MESS_SHAPE), false);
+			return (ft_printf(ERR_MESS_SHAPE, STDERR_FILENO), false);
 		i++;
 	}
 	return (true);
@@ -41,7 +41,7 @@ bool	is_perimeter_true(char **map)
 				|| j == 0 || j == count_width(map) - 1)
 			{
 				if (map[i][j] != WALL)
-					return (ft_printf(ERR_MESS_PER), false);
+					return (ft_printf(ERR_MESS_PER, STDERR_FILENO), false);
 			}
 			j++;
 		}
@@ -73,9 +73,9 @@ bool	has_start_and_and(char **map)
 		i++;
 	}
 	if (val.player != 1)
-		ft_printf(ERR_MESS_PLAYER);
+		ft_printf(ERR_MESS_PLAYER, STDERR_FILENO);
 	if (val.exit != 1)
-		ft_printf(ERR_MESS_EXIT);
+		ft_printf(ERR_MESS_EXIT, STDERR_FILENO);
 	return (val.player == 1 && val.exit == 1);
 }
 
@@ -98,16 +98,16 @@ bool	contains_coins(t_mlx_data *data)
 		i++;
 	}
 	if (data->coins == 0)
-		ft_printf(ERR_MESS_COINS);
+		ft_printf(ERR_MESS_COINS, STDERR_FILENO);
 	return (data->coins > 0);
 }
 
 bool	is_filename_valid(char *filename)
 {
 	if (ft_strlen(filename) < 5)
-		return (ft_printf(ERR_MESS_EXTEN), false);
+		return (ft_printf(ERR_MESS_EXTEN, STDERR_FILENO), false);
 	if (ft_strncmp(filename + ft_strlen(filename) - 4, ".ber", 4) != 0
 		|| ft_strncmp(filename + ft_strlen(filename) - 5, "/.ber", 5) == 0)
-		return (ft_printf(ERR_MESS_EXTEN), false);
+		return (ft_printf(ERR_MESS_EXTEN, STDERR_FILENO), false);
 	return (true);
 }

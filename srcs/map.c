@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 15:43:38 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:19:58 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static char	**read_map(char *file_name, t_mlx_data *data)
 	file_content = NULL;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf(ERR_MESS_FILE), NULL);
+		return (ft_printf(ERR_MESS_FILE, STDERR_FILENO), NULL);
 	line = get_next_line(fd, &data->flag, false);
 	if (!line)
-		return (ft_printf(ERR_MESS_EMPTY), NULL);
+		return (ft_printf(ERR_MESS_EMPTY, STDERR_FILENO), NULL);
 	while (line)
 	{
 		file_content = ft_strjoin_gnl(&file_content, &line);
@@ -62,7 +62,7 @@ static char	**read_map(char *file_name, t_mlx_data *data)
 	map = ft_split(file_content, NEW_LINE);
 	free(file_content);
 	if (close(fd) == -1 || (data->flag && map))
-		return (free_map(map), ft_printf(ERR_MESS_READ), NULL);
+		return (free_map(map), ft_printf(ERR_MESS_READ, STDERR_FILENO), NULL);
 	return (map);
 }
 
@@ -91,13 +91,14 @@ int	init_map(t_mlx_data *data, char *file)
 		return (ERROR);
 	data->width = count_width(data->map);
 	if (!data->width)
-		return (ft_printf(ERR_MESS_EMPTY), ERROR);
+		return (ft_printf(ERR_MESS_EMPTY, STDERR_FILENO), ERROR);
 	data->height = count_height(data->map);
 	if (!is_map_valid(data))
 		return (free_map(data->map), ERROR);
 	path = has_valid_path(data);
 	if (!path)
-		return (ft_printf(ERR_MESS_PATH), ERROR);
+		return (free_map(data->map), \
+		ft_printf(ERR_MESS_PATH, STDERR_FILENO), ERROR);
 	free_map(data->map);
 	data->map = read_map(file, data);
 	if (!data->map)

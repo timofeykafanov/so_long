@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 10:35:33 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:24:31 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_printf("Error! Usage: %s [map file path]\n", argv[0]);
+		ft_printf(ERR_MESS_ARGS, STDERR_FILENO, argv[0]);
 		return (ERROR);
 	}
 	return (SUCCESS);

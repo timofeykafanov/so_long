@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:07:18 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 10:09:05 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:28:50 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handle_up(t_mlx_data *data, int y, int x)
 {
 	if (data->map[y - 1][x] == ENEMY)
 	{
-		ft_printf("You died!\n");
+		ft_printf(LOSE_MESS, STDOUT_FILENO);
 		close_game(data);
 	}
 	if (data->map[y - 1][x] == EXIT)
@@ -24,7 +24,7 @@ void	handle_up(t_mlx_data *data, int y, int x)
 		if (data->coins == 0)
 		{
 			data->moves++;
-			ft_printf("You won! Result: %d\n", data->moves);
+			ft_printf(WIN_MESS, STDOUT_FILENO, data->moves);
 			close_game(data);
 		}
 		return ;
@@ -42,7 +42,7 @@ void	handle_right(t_mlx_data *data, int y, int x)
 {
 	if (data->map[y][x + 1] == ENEMY)
 	{
-		ft_printf("You died!\n");
+		ft_printf(LOSE_MESS, STDOUT_FILENO);
 		close_game(data);
 	}
 	if (data->map[y][x + 1] == EXIT)
@@ -50,7 +50,7 @@ void	handle_right(t_mlx_data *data, int y, int x)
 		if (data->coins == 0)
 		{
 			data->moves++;
-			ft_printf("You won! Result: %d\n", data->moves);
+			ft_printf(WIN_MESS, STDOUT_FILENO, data->moves);
 			close_game(data);
 		}
 		return ;
@@ -68,7 +68,7 @@ void	handle_left(t_mlx_data *data, int y, int x)
 {
 	if (data->map[y][x - 1] == ENEMY)
 	{
-		ft_printf("You died!\n");
+		ft_printf(LOSE_MESS, STDOUT_FILENO);
 		close_game(data);
 	}
 	if (data->map[y][x - 1] == EXIT)
@@ -76,7 +76,7 @@ void	handle_left(t_mlx_data *data, int y, int x)
 		if (data->coins == 0)
 		{
 			data->moves++;
-			ft_printf("You won! Result: %d\n", data->moves);
+			ft_printf(WIN_MESS, STDOUT_FILENO, data->moves);
 			close_game(data);
 		}
 		return ;
@@ -94,7 +94,7 @@ void	handle_down(t_mlx_data *data, int y, int x)
 {
 	if (data->map[y + 1][x] == ENEMY)
 	{
-		ft_printf("You died!\n");
+		ft_printf(LOSE_MESS, STDOUT_FILENO);
 		close_game(data);
 	}
 	if (data->map[y + 1][x] == EXIT)
@@ -102,7 +102,7 @@ void	handle_down(t_mlx_data *data, int y, int x)
 		if (data->coins == 0)
 		{
 			data->moves++;
-			ft_printf("You won! Result: %d\n", data->moves);
+			ft_printf(WIN_MESS, STDOUT_FILENO, data->moves);
 			close_game(data);
 		}
 		return ;

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:56:43 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/16 18:17:10 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:09:11 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ size_t	printf_ft_strlen(const char *s)
 	return (len);
 }
 
-void	printf_ft_putchar(char c, int *count)
+void	printf_ft_putchar(char c, int *count, int fd)
 {
-	*count += write(1, &c, 1);
+	*count += write(fd, &c, 1);
 }
 
-void	printf_ft_putstr(char *str, int *count)
+void	printf_ft_putstr(char *str, int *count,  int fd)
 {
 	while (*str)
-		*count += write(1, &(*str++), 1);
+		*count += write(fd, &(*str++), 1);
 }
 
 char	*printf_ft_strdup(const char *s)

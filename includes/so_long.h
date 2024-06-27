@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 10:30:27 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:28:21 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,67 +46,67 @@
 
 # define NEW_LINE '\n'
 
-# define P_IMG_0 "./images/hero/sprite_0.xpm"
+# define P_IMG_0 "./textures/hero/sprite_0.xpm"
 
-# define P_IMG_1_L "./images/hero/sprite_1_l.xpm"
-# define P_IMG_2_L "./images/hero/sprite_2_l.xpm"
-# define P_IMG_3_L "./images/hero/sprite_3_l.xpm"
+# define P_IMG_1_L "./textures/hero/sprite_1_l.xpm"
+# define P_IMG_2_L "./textures/hero/sprite_2_l.xpm"
+# define P_IMG_3_L "./textures/hero/sprite_3_l.xpm"
 
-# define P_IMG_1_U "./images/hero/sprite_1_u.xpm"
-# define P_IMG_2_U "./images/hero/sprite_2_u.xpm"
-# define P_IMG_3_U "./images/hero/sprite_3_u.xpm"
+# define P_IMG_1_U "./textures/hero/sprite_1_u.xpm"
+# define P_IMG_2_U "./textures/hero/sprite_2_u.xpm"
+# define P_IMG_3_U "./textures/hero/sprite_3_u.xpm"
 
-# define P_IMG_1_R "./images/hero/sprite_1_r.xpm"
-# define P_IMG_2_R "./images/hero/sprite_2_r.xpm"
-# define P_IMG_3_R "./images/hero/sprite_3_r.xpm"
+# define P_IMG_1_R "./textures/hero/sprite_1_r.xpm"
+# define P_IMG_2_R "./textures/hero/sprite_2_r.xpm"
+# define P_IMG_3_R "./textures/hero/sprite_3_r.xpm"
 
-# define P_IMG_1_D "./images/hero/sprite_1_d.xpm"
-# define P_IMG_2_D "./images/hero/sprite_2_d.xpm"
-# define P_IMG_3_D "./images/hero/sprite_3_d.xpm"
+# define P_IMG_1_D "./textures/hero/sprite_1_d.xpm"
+# define P_IMG_2_D "./textures/hero/sprite_2_d.xpm"
+# define P_IMG_3_D "./textures/hero/sprite_3_d.xpm"
 
-# define ENEMY_RED_0 "./images/enemy/red/red_0.xpm"
-# define ENEMY_RED_1 "./images/enemy/red/red_1.xpm"
-# define ENEMY_RED_2 "./images/enemy/red/red_2.xpm"
+# define ENEMY_RED_0 "./textures/enemy/red/red_0.xpm"
+# define ENEMY_RED_1 "./textures/enemy/red/red_1.xpm"
+# define ENEMY_RED_2 "./textures/enemy/red/red_2.xpm"
 
-# define ENEMY_GREEN_0 "./images/enemy/green/green_0.xpm"
-# define ENEMY_GREEN_1 "./images/enemy/green/green_1.xpm"
-# define ENEMY_GREEN_2 "./images/enemy/green/green_2.xpm"
+# define ENEMY_GREEN_0 "./textures/enemy/green/green_0.xpm"
+# define ENEMY_GREEN_1 "./textures/enemy/green/green_1.xpm"
+# define ENEMY_GREEN_2 "./textures/enemy/green/green_2.xpm"
 
-# define ENEMY_SKY_0 "./images/enemy/sky/sky_0.xpm"
-# define ENEMY_SKY_1 "./images/enemy/sky/sky_1.xpm"
-# define ENEMY_SKY_2 "./images/enemy/sky/sky_2.xpm"
+# define ENEMY_SKY_0 "./textures/enemy/sky/sky_0.xpm"
+# define ENEMY_SKY_1 "./textures/enemy/sky/sky_1.xpm"
+# define ENEMY_SKY_2 "./textures/enemy/sky/sky_2.xpm"
 
-# define ENEMY_PURPLE_0 "./images/enemy/purple/purple_0.xpm"
-# define ENEMY_PURPLE_1 "./images/enemy/purple/purple_1.xpm"
-# define ENEMY_PURPLE_2 "./images/enemy/purple/purple_2.xpm"
+# define ENEMY_PURPLE_0 "./textures/enemy/purple/purple_0.xpm"
+# define ENEMY_PURPLE_1 "./textures/enemy/purple/purple_1.xpm"
+# define ENEMY_PURPLE_2 "./textures/enemy/purple/purple_2.xpm"
 
-# define FLOOR_IMG "./images/floor/floor.xpm"
+# define FLOOR_IMG "./textures/floor/floor.xpm"
 
-# define C_IMG_0 "./images/coins/coin1.xpm"
-# define C_IMG_1 "./images/coins/coin2.xpm"
-# define C_IMG_2 "./images/coins/coin3.xpm"
-# define C_IMG_3 "./images/coins/coin4.xpm"
-# define C_IMG_4 "./images/coins/coin55.xpm"
-# define C_IMG_5 "./images/coins/coin6.xpm"
+# define C_IMG_0 "./textures/coins/coin1.xpm"
+# define C_IMG_1 "./textures/coins/coin2.xpm"
+# define C_IMG_2 "./textures/coins/coin3.xpm"
+# define C_IMG_3 "./textures/coins/coin4.xpm"
+# define C_IMG_4 "./textures/coins/coin55.xpm"
+# define C_IMG_5 "./textures/coins/coin6.xpm"
 
-# define EXIT_IMG "./images/exit/color.xpm"
+# define EXIT_IMG "./textures/exit/color.xpm"
 
-# define WALL_IMG	"./images/walls/wall.xpm"
-# define RTLB		"./images/walls/wall_rtlb.xpm"
-# define RBL		"./images/walls/wall_rbl.xpm"
-# define LTB		"./images/walls/wall_ltb.xpm"
-# define RTL		"./images/walls/wall_rtl.xpm"
-# define RTB		"./images/walls/wall_rtb.xpm"
-# define RL			"./images/walls/wall_rl.xpm"
-# define TB			"./images/walls/wall_tb.xpm"
-# define RB			"./images/walls/wall_rb.xpm"
-# define LB			"./images/walls/wall_lb.xpm"
-# define RT			"./images/walls/wall_rt.xpm"
-# define LT			"./images/walls/wall_lt.xpm"
-# define B			"./images/walls/wall_b.xpm"
-# define T			"./images/walls/wall_t.xpm"
-# define R			"./images/walls/wall_r.xpm"
-# define L			"./images/walls/wall_l.xpm"
+# define WALL_IMG	"./textures/walls/wall.xpm"
+# define RTLB		"./textures/walls/wall_rtlb.xpm"
+# define RBL		"./textures/walls/wall_rbl.xpm"
+# define LTB		"./textures/walls/wall_ltb.xpm"
+# define RTL		"./textures/walls/wall_rtl.xpm"
+# define RTB		"./textures/walls/wall_rtb.xpm"
+# define RL			"./textures/walls/wall_rl.xpm"
+# define TB			"./textures/walls/wall_tb.xpm"
+# define RB			"./textures/walls/wall_rb.xpm"
+# define LB			"./textures/walls/wall_lb.xpm"
+# define RT			"./textures/walls/wall_rt.xpm"
+# define LT			"./textures/walls/wall_lt.xpm"
+# define B			"./textures/walls/wall_b.xpm"
+# define T			"./textures/walls/wall_t.xpm"
+# define R			"./textures/walls/wall_r.xpm"
+# define L			"./textures/walls/wall_l.xpm"
 
 # define ERR_MESS_PER		"Error\nThe map should be surrounded by walls!\n"
 # define ERR_MESS_EXTEN		"Error\nInvalid file extention!\n"
@@ -119,6 +119,11 @@
 # define ERR_MESS_EMPTY		"Error\nEmpty map!\n"
 # define ERR_MESS_PATH		"Error\nThere is no valid path!\n"
 # define ERR_MESS_SYMB		"Error\nInvalid symbol found!\n"
+# define ERR_MESS_ARGS		"Error! Usage: %s [map file path]\n"
+
+# define LOSE_MESS	"You died!\n"
+# define MOVES_MESS	"Moves: %d\n"
+# define WIN_MESS	"You won! Result: %d\n"
 
 typedef struct s_mlx_data
 {
@@ -212,7 +217,7 @@ bool	has_only_valid_symbols(char **map);
 
 // close.c
 
-int	close_game(t_mlx_data *data);
+int		close_game(t_mlx_data *data);
 
 // sprite_player_bonus.c
 

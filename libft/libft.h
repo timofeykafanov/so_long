@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:58:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/25 10:21:09 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:08:32 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,16 @@ size_t	printf_ft_strlen(const char *s);
 char	*printf_ft_strdup(const char *s);
 char	*printf_ft_itoa(int n);
 char	*printf_ft_itoa_u(unsigned int n);
-void	printf_ft_putchar(char c, int *count);
-void	printf_ft_putstr(char *str, int *count);
-void	put_hex(unsigned long num, char chr, int *count);
-void	handle_p(va_list type, int *count, char chr);
-void	handle_x(va_list type, int *count, char chr);
-void	handle_c(va_list type, int *count);
-void	handle_s(va_list type, int *count);
-void	handle_d_and_i(va_list type, int *count);
-void	handle_u(va_list type, int *count);
-void	handle_percent(int *count);
-int		ft_printf(const char *s, ...);
+void	printf_ft_putchar(char c, int *count, int fd);
+void	printf_ft_putstr(char *str, int *count, int fd);
+void	put_hex(unsigned long num, char chr, int *count, int fd);
+void	handle_p(va_list type, int *count, int fd, char chr);
+void	handle_x(va_list type, int *count, int fd, char chr);
+void	handle_c(va_list type, int *count, int fd);
+void	handle_s(va_list type, int *count, int fd);
+void	handle_d_and_i(va_list type, int *count, int fd);
+void	handle_u(va_list type, int *count, int fd);
+void	handle_percent(int *count, int fd);
+int		ft_printf(const char *s, int fd, ...);
 
 #endif

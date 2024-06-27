@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 11:10:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 10:30:13 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:21:04 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int	close_game(t_mlx_data *data)
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free_map(data->map);
-	exit(1);
+	exit(0);
 }
