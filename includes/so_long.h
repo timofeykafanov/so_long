@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 10:05:49 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/27 10:30:27 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../minilibx-linux/mlx.h"
 // # include <mlx.h>
 # include <X11/keysym.h>
+# include <X11/X.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include <time.h>
@@ -211,7 +212,7 @@ bool	has_only_valid_symbols(char **map);
 
 // close.c
 
-void	close_game(t_mlx_data *data);
+int	close_game(t_mlx_data *data);
 
 // sprite_player_bonus.c
 
