@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 08:23:05 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/28 09:21:43 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:24:24 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,14 @@ int	handle_input(int key, t_mlx_data *data)
 {
 	if (key == XK_Escape)
 		close_game(data);
-	if (key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left
-		|| key == XK_W || key == XK_S || key == XK_D || key == XK_A
-		|| key == XK_w || key == XK_s || key == XK_d || key == XK_a)
-	{
-		if (key == XK_Up || key == XK_W || key == XK_w)
-			move_up(data);
-		else if (key == XK_Down || key == XK_S || key == XK_s)
-			move_down(data);
-		else if (key == XK_Right || key == XK_D || key == XK_d)
-			move_right(data);
-		else if (key == XK_Left || key == XK_A || key == XK_a)
-			move_left(data);
-	}
+	if (key == XK_Up || key == XK_W || key == XK_w)
+		move_up(data);
+	else if (key == XK_Down || key == XK_S || key == XK_s)
+		move_down(data);
+	else if (key == XK_Right || key == XK_D || key == XK_d)
+		move_right(data);
+	else if (key == XK_Left || key == XK_A || key == XK_a)
+		move_left(data);
 	return (SUCCESS);
 }
 
