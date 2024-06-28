@@ -26,15 +26,18 @@ SRCS		= \
 			$(SRCSDIR)/symbol_check.c \
 			$(SRCSDIR)/close.c \
 			$(SRCSDIR)/movements_utils.c \
+			$(SRCSDIR)/count.c \
+			$(SRCSDIR)/init_images.c \
+			$(SRCSDIR)/destroy_images.c
 
 SRCS_B		= \
 			$(SRCSDIR)/main_bonus.c \
 			$(SRCSDIR)/display_bonus.c \
-			$(SRCSDIR)/display_utils.c \
+			$(SRCSDIR)/display_utils_bonus.c \
 			$(SRCSDIR)/map.c \
 			$(SRCSDIR)/map_utils.c \
 			$(SRCSDIR)/free.c \
-			$(SRCSDIR)/put_border.c \
+			$(SRCSDIR)/put_border_bonus.c \
 			$(SRCSDIR)/movements_bonus.c \
 			$(SRCSDIR)/flood_fill_bonus.c \
 			$(SRCSDIR)/symbol_check_bouns.c \
@@ -43,9 +46,11 @@ SRCS_B		= \
 			$(SRCSDIR)/sprite_coin_bonus.c \
 			$(SRCSDIR)/sprite_enemy_bonus.c \
 			$(SRCSDIR)/move_enemies_bonus.c \
-			$(SRCSDIR)/timeout_bonus.c \
 			$(SRCSDIR)/move_enemies_utils_bonus.c \
 			$(SRCSDIR)/movements_utils_bonus.c \
+			$(SRCSDIR)/count.c \
+			$(SRCSDIR)/init_images.c \
+			$(SRCSDIR)/destroy_images.c
 
 
 OBJSDIR		= objs

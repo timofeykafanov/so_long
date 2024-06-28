@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:56:43 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 16:09:11 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:20:03 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	printf_ft_putchar(char c, int *count, int fd)
 	*count += write(fd, &c, 1);
 }
 
-void	printf_ft_putstr(char *str, int *count,  int fd)
+void	printf_ft_putstr(char *str, int *count, int fd)
 {
 	while (*str)
 		*count += write(fd, &(*str++), 1);

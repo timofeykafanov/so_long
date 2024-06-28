@@ -1,94 +1,113 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.c                                           :+:      :+:    :+:   */
+/*   sprite_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:29:02 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 13:48:06 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:30:56 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void	*sprite_left(t_mlx_data data, t_img *img, int frame)
+static void	sprite_left(t_mlx_data data, int y, int x, int frame)
 {
 	if (frame < 2)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_0, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_0, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 4)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_L, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_1, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 6)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_L, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_2, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 8)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_L, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_3, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 10)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_L, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_2, \
+			x * data.img.w, y * data.img.h + 45);
 	else
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_L, &img->w, &img->h));
-	return (NULL);
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_1, \
+			x * data.img.w, y * data.img.h + 45);
 }
 
-static void	*sprite_up(t_mlx_data data, t_img *img, int frame)
+static void	sprite_up(t_mlx_data data, int y, int x, int frame)
 {
 	if (frame < 2)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_0, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_0, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 4)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_U, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_4, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 6)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_U, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_5, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 8)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_U, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_6, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 10)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_U, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_5, \
+			x * data.img.w, y * data.img.h + 45);
 	else
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_U, &img->w, &img->h));
-	return (NULL);
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_4, \
+			x * data.img.w, y * data.img.h + 45);
 }
 
-static void	*sprite_right(t_mlx_data data, t_img *img, int frame)
+static void	sprite_right(t_mlx_data data, int y, int x, int frame)
 {
 	if (frame < 2)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_0, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_0, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 4)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_R, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_7, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 6)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_R, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_8, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 8)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_R, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_9, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 10)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_R, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_8, \
+			x * data.img.w, y * data.img.h + 45);
 	else
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_R, &img->w, &img->h));
-	return (NULL);
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_7, \
+			x * data.img.w, y * data.img.h + 45);
 }
 
-static void	*sprite_down(t_mlx_data data, t_img *img, int frame)
+static void	sprite_down(t_mlx_data data, int y, int x, int frame)
 {
 	if (frame < 2)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_0, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_0, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 4)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_D, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_10, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 6)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_D, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_11, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 8)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_D, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_12, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 10)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_2_D, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_11, \
+			x * data.img.w, y * data.img.h + 45);
 	else
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_1_D, &img->w, &img->h));
-	return (NULL);
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_10, \
+			x * data.img.w, y * data.img.h + 45);
 }
 
-void	*put_player_sprite(t_mlx_data data, t_img *img, int frame)
+void	display_player_sprite(t_mlx_data data, int y, int x, int frame)
 {
 	if (data.direction == 0)
-		return (sprite_left(data, img, frame));
+		sprite_left(data, y, x, frame);
 	else if (data.direction == 1)
-		return (sprite_up(data, img, frame));
+		sprite_up(data, y, x, frame);
 	else if (data.direction == 2)
-		return (sprite_right(data, img, frame));
+		sprite_right(data, y, x, frame);
 	else
-		return (sprite_down(data, img, frame));
-	return (NULL);
+		sprite_down(data, y, x, frame);
 }

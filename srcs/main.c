@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/28 09:21:12 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:31:50 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	so_long(char *file)
 {
 	static t_mlx_data	data;
 
-	ft_bzero(&data, 11);
+	ft_bzero(&data, 12);
 	if (init_map(&data, file) == ERROR)
 		return (ERROR);
 	data.mlx = mlx_init();
@@ -52,6 +52,7 @@ int	so_long(char *file)
 		free(data.mlx);
 		return (ERROR);
 	}
+	init_images(&data);
 	mlx_key_hook(data.wdw, handle_input, &data);
 	mlx_hook(data.wdw, DestroyNotify, StructureNotifyMask, &close_game, &data);
 	display_game(&data);

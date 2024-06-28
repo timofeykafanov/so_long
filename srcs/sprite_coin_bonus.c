@@ -3,28 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_coin_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:01:15 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 14:05:09 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:17:04 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	*put_coin_sprite(t_mlx_data data, t_img *img, int frame)
+void	display_coin_sprite(t_mlx_data data, int y, int x, int frame)
 {
 	if (frame < 2)
-		return (mlx_xpm_file_to_image(data.mlx, C_IMG_0, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.coin_0, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 4)
-		return (mlx_xpm_file_to_image(data.mlx, C_IMG_1, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.coin_1, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 6)
-		return (mlx_xpm_file_to_image(data.mlx, C_IMG_2, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.coin_2, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 8)
-		return (mlx_xpm_file_to_image(data.mlx, C_IMG_3, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.coin_3, \
+			x * data.img.w, y * data.img.h + 45);
 	else if (frame < 10)
-		return (mlx_xpm_file_to_image(data.mlx, C_IMG_4, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.coin_4, \
+			x * data.img.w, y * data.img.h + 45);
 	else
-		return (mlx_xpm_file_to_image(data.mlx, C_IMG_5, &img->w, &img->h));
-	return (NULL);
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.coin_5, \
+			x * data.img.w, y * data.img.h + 45);
 }

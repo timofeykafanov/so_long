@@ -3,80 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:26 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/26 13:03:01 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:29:56 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void	*put_wall(t_mlx_data data, t_img *img, int y, int x)
+static void	display_wall(t_mlx_data data, int y, int x)
 {
 	if (y == 0 || x == 0 || y == data.height - 1
 		|| x == data.width - 1)
-		return (put_border(data, img, y, x));
+		put_border(data, y, x);
 	else if (is_cross(data, y, x))
-		return (put_cross(data, img, y, x));
+		put_cross(data, y, x);
 	else if (data.map[y - 1][x] == WALL && data.map[y + 1][x] == WALL)
-		return (mlx_xpm_file_to_image(data.mlx, TB, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.wall_7, \
+			x * data.img.w, y * data.img.h);
 	else if (data.map[y][x - 1] == WALL && data.map[y][x + 1] == WALL)
-		return (mlx_xpm_file_to_image(data.mlx, RL, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.wall_6, \
+			x * data.img.w, y * data.img.h);
 	else if (is_corner(data, y, x))
-		return (put_corner(data, img, y, x));
-	else if (data.map[y + 1][x] == WALL)
-		return (mlx_xpm_file_to_image(data.mlx, B, &img->w, &img->h));
-	else if (data.map[y - 1][x] == WALL)
-		return (mlx_xpm_file_to_image(data.mlx, T, &img->w, &img->h));
-	else if (data.map[y][x + 1] == WALL)
-		return (mlx_xpm_file_to_image(data.mlx, R, &img->w, &img->h));
-	else if (data.map[y][x - 1] == WALL)
-		return (mlx_xpm_file_to_image(data.mlx, L, &img->w, &img->h));
+		put_corner(data, y, x);
+	else if (data.map[y + 1][x] == WALL || data.map[y - 1][x] == WALL
+		|| data.map[y][x + 1] == WALL || data.map[y][x - 1] == WALL)
+		put_edge(data, y, x);
 	else
-		return (mlx_xpm_file_to_image(data.mlx, WALL_IMG, &img->w, &img->h));
-	return (NULL);
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.wall_0, \
+			x * data.img.w, y * data.img.h);
 }
 
-static void	*put_player(t_mlx_data data, t_img *img)
+static void	display_player(t_mlx_data data, int y, int x)
 {
 	if (data.direction == 0)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_L, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_3, \
+			x * data.img.w, y * data.img.h);
 	else if (data.direction == 1)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_U, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_6, \
+			x * data.img.w, y * data.img.h);
 	else if (data.direction == 2)
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_R, &img->w, &img->h));
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_9, \
+			x * data.img.w, y * data.img.h);
 	else
-		return (mlx_xpm_file_to_image(data.mlx, P_IMG_3_D, &img->w, &img->h));
-}
-
-static t_img	*put_img(t_mlx_data data, char c, int y, int x)
-{
-	static t_img	img = {NULL, IMG_W, IMG_H};
-
-	if (c == WALL)
-		img.img = put_wall(data, &img, y, x);
-	else if (c == FLOOR)
-		img.img = mlx_xpm_file_to_image(data.mlx, FLOOR_IMG, &img.w, &img.h);
-	else if (c == PLAYER)
-		img.img = put_player(data, &img);
-	else if (c == COIN)
-		img.img = mlx_xpm_file_to_image(data.mlx, C_IMG_0, &img.w, &img.h);
-	else if (c == EXIT)
-		img.img = mlx_xpm_file_to_image(data.mlx, EXIT_IMG, &img.w, &img.h);
-	return (&img);
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.player_12, \
+			x * data.img.w, y * data.img.h);
 }
 
 static void	display_img(t_mlx_data data, int y, int x)
 {
-	t_img	*img;
-
-	img = put_img(data, data.map[y][x], y, x);
-	if (!img->img)
-		return ;
-	mlx_put_image_to_window(data.mlx, data.wdw, img->img, \
-		x * img->w, y * img->h);
-	mlx_destroy_image(data.mlx, img->img);
+	if (data.map[y][x] == FLOOR)
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.floor, \
+			x * data.img.w, y * data.img.h);
+	else if (data.map[y][x] == WALL)
+		display_wall(data, y, x);
+	else if (data.map[y][x] == PLAYER)
+		display_player(data, y, x);
+	else if (data.map[y][x] == COIN)
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.coin_0, \
+			x * data.img.w, y * data.img.h);
+	else if (data.map[y][x] == EXIT)
+		mlx_put_image_to_window(data.mlx, data.wdw, data.img.exit, \
+			x * data.img.w, y * data.img.h);
 }
 
 int	display_game(t_mlx_data *data)

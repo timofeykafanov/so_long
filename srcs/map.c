@@ -6,39 +6,13 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/28 09:05:59 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:21:03 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	count_width(char **map)
-{
-	int	width;
-
-	width = 0;
-	if (!map)
-	{
-		return (0);
-	}
-	while (map[0][width])
-		width++;
-	return (width);
-}
-
-int	count_height(char **map)
-{
-	int	height;
-
-	height = 0;
-	if (!map[0])
-		return (0);
-	while (map[height])
-		height++;
-	return (height);
-}
-
-bool	check_newline(char *line)
+static bool	check_newline(char *line)
 {
 	int	i;
 
@@ -56,7 +30,7 @@ static char	**read_map(char *file_name, t_mlx_data *data)
 {
 	t_read_map	read_map;
 
-	read_map.file_content = NULL;
+	read_map.content = NULL;
 	read_map.fd = open(file_name, O_RDONLY);
 	if (read_map.fd == -1)
 		return (ft_printf(ERR_MESS_FILE, STDERR_FILENO), NULL);
@@ -65,18 +39,19 @@ static char	**read_map(char *file_name, t_mlx_data *data)
 		return (ft_printf(ERR_MESS_EMPTY, STDERR_FILENO), NULL);
 	while (read_map.line)
 	{
-		read_map.file_content = ft_strjoin_gnl(&read_map.file_content, &read_map.line);
-		if (!read_map.file_content)
+		read_map.content = ft_strjoin_gnl(&read_map.content, &read_map.line);
+		if (!read_map.content)
 			return (get_next_line(read_map.fd, &data->flag, true), NULL);
 		read_map.line = get_next_line(read_map.fd, &data->flag, false);
 	}
-	read_map.map = ft_split(read_map.file_content, NEW_LINE);
-	if (!check_newline(read_map.file_content) && read_map.map)
-		return (free_map(read_map.map), free(read_map.file_content), \
+	read_map.map = ft_split(read_map.content, NEW_LINE);
+	if (!check_newline(read_map.content) && read_map.map)
+		return (free_map(read_map.map), free(read_map.content), \
 		ft_printf(ERR_MESS_NEWLINE, STDERR_FILENO), NULL);
-	free(read_map.file_content);
+	free(read_map.content);
 	if (close(read_map.fd) == -1 || (data->flag && read_map.map))
-		return (free_map(read_map.map), ft_printf(ERR_MESS_READ, STDERR_FILENO), NULL);
+		return (free_map(read_map.map), \
+			ft_printf(ERR_MESS_READ, STDERR_FILENO), NULL);
 	return (read_map.map);
 }
 
