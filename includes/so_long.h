@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 17:28:21 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:04:30 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,12 @@
 # define ERR_MESS_PLAYER	"Error\nThere should be 1 player!\n"
 # define ERR_MESS_EXIT		"Error\nThere should be 1 exit!\n"
 # define ERR_MESS_COINS		"Error\nThere should be at least 1 collectible!\n"
-# define ERR_MESS_READ		"Error\nRrror reading file!\n"
+# define ERR_MESS_READ		"Error\nError reading file!\n"
 # define ERR_MESS_EMPTY		"Error\nEmpty map!\n"
 # define ERR_MESS_PATH		"Error\nThere is no valid path!\n"
 # define ERR_MESS_SYMB		"Error\nInvalid symbol found!\n"
-# define ERR_MESS_ARGS		"Error! Usage: %s [map file path]\n"
+# define ERR_MESS_NEWLINE	"Error\nInvalid newline found!\n"
+# define ERR_MESS_ARGS		"Error\nUsage: %s [map file path]\n"
 
 # define LOSE_MESS	"You died!\n"
 # define MOVES_MESS	"Moves: %d\n"
@@ -158,6 +159,14 @@ typedef struct s_validation
 	int	player;
 	int	exit;
 }	t_validation;
+
+typedef struct s_read_map
+{
+	char	**map;
+	char	*file_content;
+	char	*line;
+	int		fd;
+}	t_read_map;
 
 // free.c
 

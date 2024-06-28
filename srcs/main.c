@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 17:24:31 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:21:12 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@ int	handle_input(int key, t_mlx_data *data)
 {
 	if (key == XK_Escape)
 		close_game(data);
-	if (key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left)
+	if (key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left
+		|| key == XK_W || key == XK_S || key == XK_D || key == XK_A
+		|| key == XK_w || key == XK_s || key == XK_d || key == XK_a)
 	{
-		if (key == XK_Up)
+		if (key == XK_Up || key == XK_W || key == XK_w)
 			move_up(data);
-		else if (key == XK_Down)
+		else if (key == XK_Down || key == XK_S || key == XK_s)
 			move_down(data);
-		else if (key == XK_Right)
+		else if (key == XK_Right || key == XK_D || key == XK_d)
 			move_right(data);
-		else if (key == XK_Left)
+		else if (key == XK_Left || key == XK_A || key == XK_a)
 			move_left(data);
 		display_game(data);
 	}
@@ -54,7 +56,6 @@ int	so_long(char *file)
 	mlx_hook(data.wdw, DestroyNotify, StructureNotifyMask, &close_game, &data);
 	display_game(&data);
 	mlx_loop(data.mlx);
-	free_map(data.map);
 	return (SUCCESS);
 }
 

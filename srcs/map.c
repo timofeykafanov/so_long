@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:48:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/27 17:19:58 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:05:59 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,46 @@ int	count_height(char **map)
 	return (height);
 }
 
+bool	check_newline(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == NEW_LINE && line[i + 1] == NEW_LINE)
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 static char	**read_map(char *file_name, t_mlx_data *data)
 {
-	char	**map;
-	char	*file_content;
-	char	*line;
-	int		fd;
+	t_read_map	read_map;
 
-	file_content = NULL;
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
+	read_map.file_content = NULL;
+	read_map.fd = open(file_name, O_RDONLY);
+	if (read_map.fd == -1)
 		return (ft_printf(ERR_MESS_FILE, STDERR_FILENO), NULL);
-	line = get_next_line(fd, &data->flag, false);
-	if (!line)
+	read_map.line = get_next_line(read_map.fd, &data->flag, false);
+	if (!read_map.line)
 		return (ft_printf(ERR_MESS_EMPTY, STDERR_FILENO), NULL);
-	while (line)
+	while (read_map.line)
 	{
-		file_content = ft_strjoin_gnl(&file_content, &line);
-		if (!file_content)
-			return (get_next_line(fd, &data->flag, true), NULL);
-		line = get_next_line(fd, &data->flag, false);
+		read_map.file_content = ft_strjoin_gnl(&read_map.file_content, &read_map.line);
+		if (!read_map.file_content)
+			return (get_next_line(read_map.fd, &data->flag, true), NULL);
+		read_map.line = get_next_line(read_map.fd, &data->flag, false);
 	}
-	map = ft_split(file_content, NEW_LINE);
-	free(file_content);
-	if (close(fd) == -1 || (data->flag && map))
-		return (free_map(map), ft_printf(ERR_MESS_READ, STDERR_FILENO), NULL);
-	return (map);
+	read_map.map = ft_split(read_map.file_content, NEW_LINE);
+	if (!check_newline(read_map.file_content) && read_map.map)
+		return (free_map(read_map.map), free(read_map.file_content), \
+		ft_printf(ERR_MESS_NEWLINE, STDERR_FILENO), NULL);
+	free(read_map.file_content);
+	if (close(read_map.fd) == -1 || (data->flag && read_map.map))
+		return (free_map(read_map.map), ft_printf(ERR_MESS_READ, STDERR_FILENO), NULL);
+	return (read_map.map);
 }
 
 static inline bool	is_map_valid(t_mlx_data *data)
