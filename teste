@@ -23,5 +23,6 @@ ghub () {
 alias f='make fclean'
 alias c='make clean'
 alias re='make re'
+alias reb='make reb'
 alias r='make run'
 alias mem='ncdu'
