@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:15:34 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/28 14:31:50 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/07/03 08:49:51 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	so_long(char *file)
 {
 	static t_mlx_data	data;
 
-	ft_bzero(&data, 12);
+	ft_bzero(&data, sizeof(data));
 	if (init_map(&data, file) == ERROR)
 		return (ERROR);
 	data.mlx = mlx_init();
@@ -53,6 +53,8 @@ int	so_long(char *file)
 		return (ERROR);
 	}
 	init_images(&data);
+	if (!check_images(&data))
+		close_game_error(&data);
 	mlx_key_hook(data.wdw, handle_input, &data);
 	mlx_hook(data.wdw, DestroyNotify, StructureNotifyMask, &close_game, &data);
 	display_game(&data);

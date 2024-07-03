@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macro.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:12:40 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/28 15:16:50 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/07/03 08:59:48 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define ERR_MESS_SYMB		"Error\nInvalid symbol found!\n"
 # define ERR_MESS_NEWLINE	"Error\nInvalid newline found!\n"
 # define ERR_MESS_ARGS		"Error\nUsage: %s [map file path]\n"
+# define ERR_MESS_IMG		"Error\nImage creating error!\n"
 
 # define LOSE_MESS	"You died!\n"
 # define MOVES_MESS	"Moves: %d\n"

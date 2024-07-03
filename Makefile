@@ -28,7 +28,8 @@ SRCS		= \
 			$(SRCSDIR)/movements_utils.c \
 			$(SRCSDIR)/count.c \
 			$(SRCSDIR)/init_images.c \
-			$(SRCSDIR)/destroy_images.c
+			$(SRCSDIR)/destroy_images.c \
+			$(SRCSDIR)/check_images.c \
 
 SRCS_B		= \
 			$(SRCSDIR)/main_bonus.c \
@@ -50,7 +51,8 @@ SRCS_B		= \
 			$(SRCSDIR)/movements_utils_bonus.c \
 			$(SRCSDIR)/count.c \
 			$(SRCSDIR)/init_images.c \
-			$(SRCSDIR)/destroy_images.c
+			$(SRCSDIR)/destroy_images.c \
+			$(SRCSDIR)/check_images.c \
 
 
 OBJSDIR		= objs

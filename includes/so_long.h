@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:16:17 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/28 15:16:18 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/07/03 08:43:31 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ bool	has_valid_path(t_mlx_data *data);
 bool	has_only_valid_symbols(char **map);
 
 // close.c
-
+int		close_game_error(t_mlx_data *data);
 int		close_game(t_mlx_data *data);
 
 // sprite_player_bonus.c
@@ -116,5 +116,9 @@ void	init_images(t_mlx_data *data);
 // destroy_images.c
 
 void	destroy_images(t_mlx_data *data);
+
+// check_images.c
+
+bool	check_images(t_mlx_data *data);
 
 #endif // SO_LONG_H
